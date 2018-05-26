@@ -10,7 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class InterfacePrincipal extends JFrame {
-
+        
+        public static final int FRAME_WIDTH = 900;
+        public static final int FRAME_HEIGHT = 600;
+        
 	private CanvasJogo canvas = new CanvasJogo();
 	CanvasThread updateScreenThread = new CanvasThread(canvas);
 
@@ -29,19 +32,22 @@ public class InterfacePrincipal extends JFrame {
 
 	public InterfacePrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// Centralizar Janela
 		setLocationRelativeTo(null);
+                setResizable(false);
 		
 		getContentPane().setLayout(new BorderLayout());
 		setTitle("Batalha Naval");
 		getContentPane().add("Center", canvas);
+                
+                Color blue = new Color(1, 50, 67);
+                canvas.setBackground(blue);
 		
 		// Define largura e altura da janela principal
-		setSize(canvas.RECT_WIDTH * canvas.getCanvasNumberOfRows(), canvas.RECT_HEIGHT * canvas.getCanvasNumberOfLines());
+		setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		
 		setVisible(true);
 		
-		// Inicia Thread com timer para redesenhar a tela.
+		// Thread with timer to repaint the screen
 		updateScreenThread.start();
 		
 		canvas.addMouseListener(new MouseListener() {
@@ -77,5 +83,6 @@ public class InterfacePrincipal extends JFrame {
 
 		});
 	}
+        
 
 }
