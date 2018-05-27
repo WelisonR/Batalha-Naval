@@ -21,7 +21,8 @@ public class InterfacePrincipal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InterfacePrincipal frame = new InterfacePrincipal();
+					//InterfacePrincipal frame = new InterfacePrincipal();
+                                        Menu frame = new Menu();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +33,6 @@ public class InterfacePrincipal extends JFrame {
 
 	public InterfacePrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
                 setResizable(false);
 		
 		getContentPane().setLayout(new BorderLayout());
@@ -45,6 +45,7 @@ public class InterfacePrincipal extends JFrame {
 		// Define largura e altura da janela principal
 		setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		
+                setLocationRelativeTo(null);
 		setVisible(true);
 		
 		// Thread with timer to repaint the screen
