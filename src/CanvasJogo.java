@@ -43,7 +43,7 @@ public class CanvasJogo extends Canvas {
 	public void paint(Graphics g) {
                 drawGrid(g);
                 drawBoard(g);
-                drawBoats(g);
+                drawFrameBoard(g);
 	}
         
         public void drawBoard(Graphics g){
@@ -92,7 +92,7 @@ public class CanvasJogo extends Canvas {
         }
 	
         
-        public void drawBoats(Graphics g){
+        public void drawFrameBoard(Graphics g){
               ImageIcon gameFrameBoard = new ImageIcon("images/gameFrame.png");
               final Image imgGameFrameBoard = gameFrameBoard.getImage();
               

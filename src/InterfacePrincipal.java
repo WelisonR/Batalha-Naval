@@ -1,18 +1,18 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JOptionPane;
 
 public class InterfacePrincipal extends JFrame {
         
         public static final int FRAME_WIDTH = 900;
         public static final int FRAME_HEIGHT = 600;
+        private int mouseReleasedBoardLocationX, mouseReleasedBoardLocationY;
+        private int mousePressedBoardLocationX, mousePressedBoardLocationY;
+        
         
         LeitorMapa mapInformations;
         AcoesJogador actions;
@@ -49,35 +49,53 @@ public class InterfacePrincipal extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-		        int x=e.getX();
-		        int y=e.getY();
-				
-		        int y_pos = (x-CanvasJogo.MARGIN)/canvas.RECT_WIDTH;
-		        int x_pos = (y-CanvasJogo.MARGIN)/canvas.RECT_HEIGHT;
-
-                        if ((x > CanvasJogo.MARGIN && y > CanvasJogo.MARGIN) &&
-                             (x < FRAME_WIDTH-CanvasJogo.MENU_WIDTH && y < FRAME_HEIGHT)){
-                                actions.setMatrixUserChoices(x_pos, y_pos);
-                        }
-				
+                                int x = e.getX();
+                                int y = e.getY();
+                                
+                                mouseReleasedBoardLocationY = (x-CanvasJogo.MARGIN)/canvas.RECT_WIDTH;
+                                mouseReleasedBoardLocationX = (y-CanvasJogo.MARGIN)/canvas.RECT_HEIGHT;
+                                
+                                if (!(x > CanvasJogo.MARGIN && y > CanvasJogo.MARGIN) ||
+                                    !(x < FRAME_WIDTH-CanvasJogo.MENU_WIDTH && y < FRAME_HEIGHT)){
+                                        JOptionPane.showMessageDialog(null, "Jogada não aceita. Selecione uma área dentro do tabuleiro!");
+                                }
+                                else{
+                                        int attackType = actions.verifyPlayerMovement(mousePressedBoardLocationX, mousePressedBoardLocationY,
+                                                                     mouseReleasedBoardLocationX, mouseReleasedBoardLocationY);
+                                        if (attackType == -1){
+                                                JOptionPane.showMessageDialog(null, "Área de ataque não válida!");
+                                        }
+                                        else{
+                                                actions.setMatrixUserChoices(mousePressedBoardLocationX, mousePressedBoardLocationY,
+                                                                     mouseReleasedBoardLocationX, mouseReleasedBoardLocationY);
+                                        }
+                                }
 			}
 
 			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
+			public void mouseClicked(MouseEvent e) {}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
+                                int x = e.getX();
+                                int y = e.getY();
+                                
+                                mousePressedBoardLocationY = (x-CanvasJogo.MARGIN)/canvas.RECT_WIDTH;
+                                mousePressedBoardLocationX = (y-CanvasJogo.MARGIN)/canvas.RECT_HEIGHT;
+                                
+                                if (!(x > CanvasJogo.MARGIN && y > CanvasJogo.MARGIN) ||
+                                    !(x < FRAME_WIDTH-CanvasJogo.MENU_WIDTH && y < FRAME_HEIGHT)){
+                                        //actions.setMatrixUserChoices(mousePressedBoardLocationX, mousePressedBoardLocationY);
+                                         JOptionPane.showMessageDialog(null, "Jogada não aceita. Selecione uma área dentro do tabuleiro!");
+                                }
+                                
 			}
 
 			@Override
-			public void mouseEntered(MouseEvent e) {
-			}
+			public void mouseEntered(MouseEvent e) {}
 
 			@Override
-			public void mouseExited(MouseEvent e) {
-			}
-
+			public void mouseExited(MouseEvent e) {}
 
 		});
 	}
