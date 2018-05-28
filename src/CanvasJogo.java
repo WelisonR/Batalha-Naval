@@ -91,8 +91,9 @@ public class CanvasJogo extends Canvas {
         
         }
 	
+        
         public void drawBoats(Graphics g){
-              ImageIcon gameFrameBoard = new ImageIcon("gameFrame.png");
+              ImageIcon gameFrameBoard = new ImageIcon("images/gameFrame.png");
               final Image imgGameFrameBoard = gameFrameBoard.getImage();
               
               g.drawImage(imgGameFrameBoard, (InterfacePrincipal.FRAME_WIDTH - MENU_WIDTH), 0,
@@ -100,4 +101,5 @@ public class CanvasJogo extends Canvas {
               
               
         }
+        
 }
