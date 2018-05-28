@@ -16,7 +16,7 @@ public class CanvasJogo extends Canvas {
         private Integer[] BoatsNumber;
         
         public final static int MENU_WIDTH = 250;
-        public static final int MARGIN = 0;
+        public static final int MARGIN = 10;
         public final int RECT_WIDTH;
 	public final int RECT_HEIGHT;
 	
@@ -30,8 +30,8 @@ public class CanvasJogo extends Canvas {
                 GameMatrix = mapInformations.getGameMatrix();
                 BoatsNumber = mapInformations.getBoatsNumber();
                 
-                RECT_WIDTH = (InterfacePrincipal.FRAME_WIDTH - MENU_WIDTH) / canvasNumberOfRows;
-                RECT_HEIGHT = InterfacePrincipal.FRAME_HEIGHT / canvasNumberOfLines;
+                RECT_WIDTH = (InterfacePrincipal.FRAME_WIDTH - MENU_WIDTH-MARGIN) / canvasNumberOfRows;
+                RECT_HEIGHT = (InterfacePrincipal.FRAME_HEIGHT-MARGIN) / canvasNumberOfLines;
                 explosionMatrix = new int[mapInformations.getCanvasNumberOfRows()][mapInformations.getCanvasNumberOfLines()];
         }
         

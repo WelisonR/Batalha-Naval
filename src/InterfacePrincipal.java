@@ -46,10 +46,13 @@ public class InterfacePrincipal extends JFrame {
 		        int x=e.getX();
 		        int y=e.getY();
 				
-		        int x_pos = x/canvas.RECT_WIDTH;
-		        int y_pos = y/canvas.RECT_HEIGHT;
+		        int x_pos = (x-CanvasJogo.MARGIN)/canvas.RECT_WIDTH;
+		        int y_pos = (y-CanvasJogo.MARGIN)/canvas.RECT_HEIGHT;
 
-		        canvas.setShot(x_pos, y_pos);
+                        if ((x > CanvasJogo.MARGIN && y > CanvasJogo.MARGIN) &&
+                             (x < FRAME_WIDTH-CanvasJogo.MENU_WIDTH && y < FRAME_HEIGHT)){
+                                canvas.setShot(x_pos, y_pos);
+                        }
 				
 			}
 
