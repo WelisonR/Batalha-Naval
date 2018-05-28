@@ -50,9 +50,13 @@ public class CanvasJogo extends Canvas {
 		final Image imgShot = iconShot.getImage();
                 final Image imgOceanWave = oceanWave.getImage();
                 
+                int constantWidth = (int) (0.04 * RECT_WIDTH);
+                int constantHeight = (int) (0.04 * RECT_HEIGHT);
+                
 		for(int i = 0; i < canvasNumberOfRows; i++) {
-			for(int j = 0; j < canvasNumberOfLines; j++) {				
-                                g.drawImage(imgOceanWave, i*RECT_WIDTH+MARGIN, j*RECT_HEIGHT+MARGIN, RECT_WIDTH, RECT_HEIGHT, null);
+			for(int j = 0; j < canvasNumberOfLines; j++) {
+                                g.drawImage(imgOceanWave, i*RECT_WIDTH+MARGIN+constantWidth, j*RECT_HEIGHT+MARGIN+constantHeight, 
+                                            RECT_WIDTH- 2*constantWidth, RECT_HEIGHT- 2*constantHeight, null);
                                 
 				if(explosionMatrix[i][j] == 1) {
 					g.drawImage(imgShot, i*RECT_WIDTH+MARGIN, j*RECT_HEIGHT+MARGIN, RECT_WIDTH, RECT_HEIGHT, null);

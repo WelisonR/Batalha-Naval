@@ -110,7 +110,7 @@ public class Menu extends javax.swing.JFrame {
                                 JOptionPane.showMessageDialog(null, "Mapa do jogo não encontrado!");
                         }
                         
-                        if (!mapPath.substring(mapPath.length()-9, mapPath.length()-9+3).equals("map")){
+                        if (!occurredAnError && !mapPath.substring(mapPath.length()-9, mapPath.length()-9+3).equals("map")){
                                 occurredAnError = true;
                                 JOptionPane.showMessageDialog(null, "O Arquivo selecionado não corresponde ao mapa do jogo");
                         }
