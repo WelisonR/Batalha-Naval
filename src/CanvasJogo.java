@@ -4,21 +4,36 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.io.File;
 
 import javax.swing.ImageIcon;
 
 public class CanvasJogo extends Canvas {
 	
-	private int canvasNumberOfRows = 8;
-	private int canvasNumberOfLines = 7;
+        private LeitorMapa mapInformations;
+	private int canvasNumberOfRows;
+	private int canvasNumberOfLines;
+        private Integer[][] GameMatrix;
+        private Integer[] BoatsNumber;
         
         public final static int MENU_WIDTH = 250;
-        public final int RECT_WIDTH = (InterfacePrincipal.FRAME_WIDTH - MENU_WIDTH) / canvasNumberOfRows;
-	public final int RECT_HEIGHT = InterfacePrincipal.FRAME_HEIGHT / canvasNumberOfLines;
-	public static final int MARGIN = 0;
+        public static final int MARGIN = 0;
+        public final int RECT_WIDTH;
+	public final int RECT_HEIGHT;
 	
-	private int [][] explosionMatrix = new int[canvasNumberOfRows][canvasNumberOfLines];
+	private int [][] explosionMatrix;
+        
+        public CanvasJogo(String filePath){
+                mapInformations = new LeitorMapa(filePath);
+                
+                canvasNumberOfRows = mapInformations.getCanvasNumberOfRows();
+                canvasNumberOfLines = mapInformations.getCanvasNumberOfLines();
+                GameMatrix = mapInformations.getGameMatrix();
+                BoatsNumber = mapInformations.getBoatsNumber();
+                
+                RECT_WIDTH = (InterfacePrincipal.FRAME_WIDTH - MENU_WIDTH) / canvasNumberOfRows;
+                RECT_HEIGHT = InterfacePrincipal.FRAME_HEIGHT / canvasNumberOfLines;
+                explosionMatrix = new int[mapInformations.getCanvasNumberOfRows()][mapInformations.getCanvasNumberOfLines()];
+        }
         
 	@Override
 	public void paint(Graphics g) {
@@ -64,22 +79,6 @@ public class CanvasJogo extends Canvas {
         
 	public void setShot(int x, int y) {
 		explosionMatrix[x][y] = 1;
-	}
-
-	public int getCanvasNumberOfRows() {
-		return canvasNumberOfRows;
-	}
-
-	public void setCanvasNumberOfRows(int canvasNumberOfRows) {
-		this.canvasNumberOfRows = canvasNumberOfRows;
-	}
-
-	public int getCanvasNumberOfLines() {
-		return canvasNumberOfLines;
-	}
-
-	public void setCanvasNumberOfLines(int canvasNumberOfLines) {
-		this.canvasNumberOfLines = canvasNumberOfLines;
 	}
 	
 }

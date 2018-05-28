@@ -1,9 +1,27 @@
 import java.awt.Color;
+import java.awt.EventQueue;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class Menu extends javax.swing.JFrame {
 
         private String PlayerName = "";
+        private String mapPath = "";
+        JFileChooser mapFile = new JFileChooser();
+        
+        public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					//InterfacePrincipal frame = new InterfacePrincipal();
+                                        Menu frame = new Menu();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
         
         public Menu() {
                 initComponents();
@@ -77,13 +95,31 @@ public class Menu extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
         private void jButtonPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPlayActionPerformed
+                boolean occurredAnError = false;
+                
                 if (jTextFieldPlayerName.getText().trim().equals("Digite o seu nickname") || jTextFieldPlayerName.getText().trim().equals("")){
                         JOptionPane.showMessageDialog(null, "Digite um nickname!");
                 }
                 else{
-                        InterfacePrincipal frame = new InterfacePrincipal();
-                        frame.setVisible(true);
-                        setVisible(false);
+                        mapFile.showOpenDialog(null);
+                        try{
+                                mapPath = mapFile.getSelectedFile().getAbsolutePath();
+                        }
+                        catch(Exception e){
+                                occurredAnError = true;
+                                JOptionPane.showMessageDialog(null, "Mapa do jogo não encontrado!");
+                        }
+                        
+                        if (!mapPath.substring(mapPath.length()-9, mapPath.length()-9+3).equals("map")){
+                                occurredAnError = true;
+                                JOptionPane.showMessageDialog(null, "O Arquivo selecionado não corresponde ao mapa do jogo");
+                        }
+                        
+                        if (!occurredAnError){
+                                InterfacePrincipal frame = new InterfacePrincipal(mapPath);
+                                frame.setVisible(true);
+                                setVisible(false);   
+                        }
                         
                 }
         }//GEN-LAST:event_jButtonPlayActionPerformed
@@ -100,15 +136,6 @@ public class Menu extends javax.swing.JFrame {
                         jTextFieldPlayerName.setText("Digite o seu nickname");
                 }
         }//GEN-LAST:event_jTextFieldPlayerNameFocusLost
-
-        public static void main(String args[]) {
-
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                        public void run() {
-                                new Menu().setVisible(true);
-                        }
-                });
-        }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton jButtonPlay;

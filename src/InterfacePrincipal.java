@@ -14,24 +14,12 @@ public class InterfacePrincipal extends JFrame {
         public static final int FRAME_WIDTH = 900;
         public static final int FRAME_HEIGHT = 600;
         
-	private CanvasJogo canvas = new CanvasJogo();
-	CanvasThread updateScreenThread = new CanvasThread(canvas);
+	private CanvasJogo canvas;
+	CanvasThread updateScreenThread;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					//InterfacePrincipal frame = new InterfacePrincipal();
-                                        Menu frame = new Menu();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	public InterfacePrincipal() {
+	public InterfacePrincipal(String filePath) {
+                canvas = new CanvasJogo(filePath);
+                updateScreenThread = new CanvasThread(canvas);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 setResizable(false);
 		
