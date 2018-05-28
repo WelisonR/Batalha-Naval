@@ -14,12 +14,18 @@ public class InterfacePrincipal extends JFrame {
         public static final int FRAME_WIDTH = 900;
         public static final int FRAME_HEIGHT = 600;
         
+        LeitorMapa mapInformations;
+        AcoesJogador actions;
 	private CanvasJogo canvas;
 	CanvasThread updateScreenThread;
 
-	public InterfacePrincipal(String filePath) {
-                canvas = new CanvasJogo(filePath);
+	public InterfacePrincipal() {
+                
+                mapInformations = new LeitorMapa(Menu.mapPath);
+                actions = new AcoesJogador(mapInformations);
+                canvas = new CanvasJogo(actions);
                 updateScreenThread = new CanvasThread(canvas);
+                
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 setResizable(false);
 		
@@ -46,12 +52,12 @@ public class InterfacePrincipal extends JFrame {
 		        int x=e.getX();
 		        int y=e.getY();
 				
-		        int x_pos = (x-CanvasJogo.MARGIN)/canvas.RECT_WIDTH;
-		        int y_pos = (y-CanvasJogo.MARGIN)/canvas.RECT_HEIGHT;
+		        int y_pos = (x-CanvasJogo.MARGIN)/canvas.RECT_WIDTH;
+		        int x_pos = (y-CanvasJogo.MARGIN)/canvas.RECT_HEIGHT;
 
                         if ((x > CanvasJogo.MARGIN && y > CanvasJogo.MARGIN) &&
                              (x < FRAME_WIDTH-CanvasJogo.MENU_WIDTH && y < FRAME_HEIGHT)){
-                                canvas.setShot(x_pos, y_pos);
+                                actions.setMatrixUserChoices(x_pos, y_pos);
                         }
 				
 			}

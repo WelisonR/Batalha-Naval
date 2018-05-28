@@ -9,8 +9,8 @@ public class LeitorMapa {
         
         public static final int NUMBEROFBOATS = 5;
         private List<String> fileLines = new ArrayList<>();
-        private int canvasNumberOfRows;
-	private int canvasNumberOfLines;
+        private static int canvasNumberOfRows;
+	private static int canvasNumberOfLines;
         private Integer[][] gameMatrix;
         private Integer[] boatsNumber;
         
@@ -74,11 +74,11 @@ public class LeitorMapa {
                 
         }
         
-        public int getCanvasNumberOfRows() {
+        public static int getCanvasNumberOfRows() {
                 return canvasNumberOfRows;
         }
 
-        public int getCanvasNumberOfLines() {
+        public static int getCanvasNumberOfLines() {
                 return canvasNumberOfLines;
         }
 

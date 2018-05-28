@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 public class Menu extends javax.swing.JFrame {
 
         private String PlayerName = "";
-        private String mapPath = "";
+        public static String mapPath = "";
         JFileChooser mapFile = new JFileChooser();
         
         public static void main(String[] args) {
@@ -116,7 +116,7 @@ public class Menu extends javax.swing.JFrame {
                         }
                         
                         if (!occurredAnError){
-                                InterfacePrincipal frame = new InterfacePrincipal(mapPath);
+                                InterfacePrincipal frame = new InterfacePrincipal();
                                 frame.setVisible(true);
                                 setVisible(false);   
                         }

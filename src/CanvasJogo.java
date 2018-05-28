@@ -9,58 +9,68 @@ import javax.swing.ImageIcon;
 
 public class CanvasJogo extends Canvas {
 	
-        private LeitorMapa mapInformations;
+        //private LeitorMapa mapInformations;
 	private int canvasNumberOfRows;
 	private int canvasNumberOfLines;
-        private Integer[][] GameMatrix;
-        private Integer[] BoatsNumber;
+        private AcoesJogador actions;
+        //private Integer[][] GameMatrix;
+        //private Integer[] BoatsNumber;
         
         public final static int MENU_WIDTH = 250;
-        public static final int MARGIN = 10;
+        public static final int MARGIN = 0; // 10 - good number
         public final int RECT_WIDTH;
 	public final int RECT_HEIGHT;
 	
-	private int [][] explosionMatrix;
+	//private int [][] explosionMatrix;
         
-        public CanvasJogo(String filePath){
-                mapInformations = new LeitorMapa(filePath);
+        public CanvasJogo(AcoesJogador actions){
+                this.actions = actions;
+                //mapInformations = new LeitorMapa(filePath);
                 
-                canvasNumberOfRows = mapInformations.getCanvasNumberOfRows();
-                canvasNumberOfLines = mapInformations.getCanvasNumberOfLines();
-                GameMatrix = mapInformations.getGameMatrix();
-                BoatsNumber = mapInformations.getBoatsNumber();
+                
+                canvasNumberOfRows = LeitorMapa.getCanvasNumberOfRows();
+                canvasNumberOfLines = LeitorMapa.getCanvasNumberOfLines();
+                
+                //GameMatrix = mapInformations.getGameMatrix();
+                //BoatsNumber = mapInformations.getBoatsNumber();
                 
                 RECT_WIDTH = (InterfacePrincipal.FRAME_WIDTH - MENU_WIDTH-MARGIN) / canvasNumberOfRows;
                 RECT_HEIGHT = (InterfacePrincipal.FRAME_HEIGHT-MARGIN) / canvasNumberOfLines;
-                explosionMatrix = new int[mapInformations.getCanvasNumberOfRows()][mapInformations.getCanvasNumberOfLines()];
+                //explosionMatrix = new int[mapInformations.getCanvasNumberOfRows()][mapInformations.getCanvasNumberOfLines()];
         }
         
 	@Override
 	public void paint(Graphics g) {
                 drawGrid(g);
-                drawWaves(g);
+                drawBoard(g);
+                drawBoats(g);
 	}
         
-        public void drawWaves(Graphics g){
+        public void drawBoard(Graphics g){
                 // Prepare an ImageIcon
                 ImageIcon oceanWave = new ImageIcon("images/waves.gif");
 		ImageIcon iconShot = new ImageIcon("images/explosion.gif");
+                ImageIcon watterShot = new ImageIcon("images/bubbles.gif");
                 
 		// Prepare an Image object to be used by drawImage()
 		final Image imgShot = iconShot.getImage();
                 final Image imgOceanWave = oceanWave.getImage();
+                final Image imgWatterShot = watterShot.getImage();
                 
                 int constantWidth = (int) (0.04 * RECT_WIDTH);
                 int constantHeight = (int) (0.04 * RECT_HEIGHT);
                 
-		for(int i = 0; i < canvasNumberOfRows; i++) {
-			for(int j = 0; j < canvasNumberOfLines; j++) {
-                                g.drawImage(imgOceanWave, i*RECT_WIDTH+MARGIN+constantWidth, j*RECT_HEIGHT+MARGIN+constantHeight, 
+		for(int i = 0; i < canvasNumberOfLines; i++) {
+			for(int j = 0; j < canvasNumberOfRows; j++) {
+                                g.drawImage(imgOceanWave, j*RECT_WIDTH+MARGIN+constantWidth, i*RECT_HEIGHT+MARGIN+constantHeight, 
                                             RECT_WIDTH- 2*constantWidth, RECT_HEIGHT- 2*constantHeight, null);
                                 
-				if(explosionMatrix[i][j] == 1) {
-					g.drawImage(imgShot, i*RECT_WIDTH+MARGIN, j*RECT_HEIGHT+MARGIN, RECT_WIDTH, RECT_HEIGHT, null);
+				if(actions.getMatrixUserChoices(i, j) == 1) {
+					g.drawImage(imgShot, j*RECT_WIDTH+MARGIN, i*RECT_HEIGHT+MARGIN, RECT_WIDTH, RECT_HEIGHT, null);
 				}
+                                if(actions.getMatrixUserChoices(i, j) == -1){
+                                        g.drawImage(imgWatterShot, j*RECT_WIDTH+MARGIN, i*RECT_HEIGHT+MARGIN, RECT_WIDTH, RECT_HEIGHT, null);
+                                }
 			}
 
 		}
@@ -80,9 +90,14 @@ public class CanvasJogo extends Canvas {
                 }
         
         }
-        
-	public void setShot(int x, int y) {
-		explosionMatrix[x][y] = 1;
-	}
 	
+        public void drawBoats(Graphics g){
+              ImageIcon gameFrameBoard = new ImageIcon("gameFrame.png");
+              final Image imgGameFrameBoard = gameFrameBoard.getImage();
+              
+              g.drawImage(imgGameFrameBoard, (InterfacePrincipal.FRAME_WIDTH - MENU_WIDTH), 0,
+                          MENU_WIDTH, InterfacePrincipal.FRAME_HEIGHT, null);
+              
+              
+        }
 }
