@@ -5,7 +5,8 @@ import static java.lang.Math.abs;
 public class AcoesJogador {
         public static final int POSITIONATTACK = 1;
         public static final int AREAATTACK = 2;
-        public static final int LINECOLUMNATTACK = 3;
+        public static final int LINEATTACK = 3;
+        public static final int COLUMNATTACK = 4;
         
         private LeitorMapa mapInformations;
         private int [][] matrixUserChoices;
@@ -44,8 +45,11 @@ public class AcoesJogador {
                 else if (deltaX == 1 && deltaY == 1){
                         return AREAATTACK;
                 }
-                else if ((deltaX == 0 && deltaY == canvasNumberOfRows-1) || (deltaY == 0 && deltaX == canvasNumberOfLines-1)){
-                        return LINECOLUMNATTACK;
+                else if (deltaX == 0 && deltaY == canvasNumberOfRows-1){
+                        return LINEATTACK;
+                }
+                else if (deltaY == 0 && deltaX == canvasNumberOfLines-1){
+                        return COLUMNATTACK;
                 }
                 else{
                         return -1;
@@ -83,6 +87,25 @@ public class AcoesJogador {
                                 }
                         }
                 }
+                
+        }
+        
+        public boolean verifyWinner(){
+                boolean winner = true;
+                externfor: for (int i = 0; i < canvasNumberOfLines; i++){
+                        for (int j = 0; j < canvasNumberOfRows; j++){
+                                if (matrixUserChoices[i][j] != 1 && gameMatrix[i][j] > 0){
+                                        winner = false;
+                                        break externfor;
+                                }
+                        }
+                }
+                
+                return winner;
+        }
+        
+        public boolean verifyLooser(){
+                return (PontuacaoJogo.ACTUALSCORE - PontuacaoJogo.POSITIONATTACKSCORE) < 0;
         }
         
         public int getMatrixUserChoices(int x, int y) {

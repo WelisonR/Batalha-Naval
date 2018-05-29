@@ -18,6 +18,33 @@ public final class PontuacaoJogo {
                 calculateScoreOfColumnAttack();
         }
         
+        public void RemainedScore(int attackType){
+                switch (attackType) {
+                        case AcoesJogador.POSITIONATTACK:
+                                if ((ACTUALSCORE - POSITIONATTACKSCORE) >= 0){
+                                        ACTUALSCORE -= POSITIONATTACKSCORE;
+                                }
+                                break;
+                        case AcoesJogador.AREAATTACK:
+                                if ((ACTUALSCORE - AREAATTACKSCORE) >= 0){
+                                        ACTUALSCORE -= AREAATTACKSCORE;
+                                }
+                                break;
+                        case AcoesJogador.LINEATTACK:
+                                if ((ACTUALSCORE - LINEATTACKSCORE) >= 0){
+                                        ACTUALSCORE -= LINEATTACKSCORE;
+                                }
+                                break;
+                        case AcoesJogador.COLUMNATTACK:
+                                if ((ACTUALSCORE - COLUMNATTACKSCORE) >= 0){
+                                        ACTUALSCORE -= COLUMNATTACKSCORE;
+                                }
+                                break;
+                        default:
+                                break;
+                }
+        }
+        
         public final void calculateNumberOfRectangles(){
                 NUMBEROFRECTANGLES = (LeitorMapa.getCanvasNumberOfLines() * LeitorMapa.getCanvasNumberOfRows());
         }

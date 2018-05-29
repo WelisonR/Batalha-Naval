@@ -15,13 +15,15 @@ public class InterfacePrincipal extends JFrame {
         
         
         LeitorMapa mapInformations;
+        PontuacaoJogo gameScore;
         AcoesJogador actions;
-	private CanvasJogo canvas;
+	CanvasJogo canvas;
 	CanvasThread updateScreenThread;
 
 	public InterfacePrincipal() {
                 
                 mapInformations = new LeitorMapa(Menu.mapPath);
+                gameScore = new PontuacaoJogo();
                 actions = new AcoesJogador(mapInformations);
                 canvas = new CanvasJogo(actions);
                 updateScreenThread = new CanvasThread(canvas);
@@ -55,19 +57,33 @@ public class InterfacePrincipal extends JFrame {
                                 mouseReleasedBoardLocationY = (x-CanvasJogo.MARGIN)/canvas.RECT_WIDTH;
                                 mouseReleasedBoardLocationX = (y-CanvasJogo.MARGIN)/canvas.RECT_HEIGHT;
                                 
-                                if (!(x > CanvasJogo.MARGIN && y > CanvasJogo.MARGIN) ||
-                                    !(x < FRAME_WIDTH-CanvasJogo.MENU_WIDTH && y < FRAME_HEIGHT)){
-                                        JOptionPane.showMessageDialog(null, "Jogada não aceita. Selecione uma área dentro do tabuleiro!");
-                                }
-                                else{
-                                        int attackType = actions.verifyPlayerMovement(mousePressedBoardLocationX, mousePressedBoardLocationY,
-                                                                     mouseReleasedBoardLocationX, mouseReleasedBoardLocationY);
-                                        if (attackType == -1){
-                                                JOptionPane.showMessageDialog(null, "Área de ataque não válida!");
+                                
+                                if(!actions.verifyWinner() && !actions.verifyLooser()){
+                                        if (!(x > CanvasJogo.MARGIN && y > CanvasJogo.MARGIN) ||
+                                            !(x < FRAME_WIDTH-CanvasJogo.MENU_WIDTH && y < FRAME_HEIGHT)){
+                                                JOptionPane.showMessageDialog(null, "Jogada não aceita. Selecione uma área dentro do tabuleiro!");
                                         }
                                         else{
-                                                actions.setMatrixUserChoices(mousePressedBoardLocationX, mousePressedBoardLocationY,
-                                                                     mouseReleasedBoardLocationX, mouseReleasedBoardLocationY);
+                                                int attackType = actions.verifyPlayerMovement(mousePressedBoardLocationX, mousePressedBoardLocationY,
+                                                                                              mouseReleasedBoardLocationX, mouseReleasedBoardLocationY);
+                                                if (attackType == -1){
+                                                        JOptionPane.showMessageDialog(null, "Área de ataque não válida!");
+                                                }
+                                                else{
+                                                        gameScore.RemainedScore(attackType);
+                                                        actions.setMatrixUserChoices(mousePressedBoardLocationX, mousePressedBoardLocationY,
+                                                                                     mouseReleasedBoardLocationX, mouseReleasedBoardLocationY);    
+                                                
+                                                }
+                                        } 
+                                }
+                                
+                                if(actions.verifyWinner()){
+                                        JOptionPane.showMessageDialog(null, "Parabéns, você ganhou!");
+                                }
+                                else{
+                                        if(actions.verifyLooser()){
+                                                JOptionPane.showMessageDialog(null, "Sem mais recursos. Você perdeu!");
                                         }
                                 }
 			}
