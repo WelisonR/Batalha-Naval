@@ -128,8 +128,8 @@ public class AcoesJogador {
                 return canvasNumberOfLines;
         }
 
-        public Integer[] getBoatsNumber() {
-                return boatsNumber;
+        public Integer getBoatsNumber(Integer x) {
+                return boatsNumber[x];
         }
         
         

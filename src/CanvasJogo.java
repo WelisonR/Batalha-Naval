@@ -49,6 +49,7 @@ public class CanvasJogo extends Canvas {
                 drawPlayerPoints(g);
                 drawAttacksScore(g);
                 drawBoats(g);
+                drawNumberOfBoats(g);
 	}
         
         public void drawBoard(Graphics g){
@@ -149,16 +150,16 @@ public class CanvasJogo extends Canvas {
                 g.setFont(new Font("Bitstream Charter", 4, 18));
                 
                 int xPosition = (int) (InterfacePrincipal.FRAME_WIDTH - 0.84*MENU_WIDTH);
-                int yPosition = (int) (0.37 * InterfacePrincipal.FRAME_HEIGHT);
+                int yPosition = (int) (0.35 * InterfacePrincipal.FRAME_HEIGHT);
                 g.drawString("POSIÇÃO:     " + String.valueOf(PontuacaoJogo.POSITIONATTACKSCORE) + " $", xPosition, yPosition);
                 
-                yPosition = (int) (0.41 * InterfacePrincipal.FRAME_HEIGHT);
+                yPosition = (int) (0.39 * InterfacePrincipal.FRAME_HEIGHT);
                 g.drawString("ÁREA:         " + String.valueOf(PontuacaoJogo.AREAATTACKSCORE) + " $", xPosition, yPosition);
                 
-                yPosition = (int) (0.45 * InterfacePrincipal.FRAME_HEIGHT);
+                yPosition = (int) (0.43 * InterfacePrincipal.FRAME_HEIGHT);
                 g.drawString("LINHA:        " + String.valueOf(PontuacaoJogo.LINEATTACKSCORE) + " $", xPosition, yPosition);
                 
-                yPosition = (int) (0.49 * InterfacePrincipal.FRAME_HEIGHT);
+                yPosition = (int) (0.47 * InterfacePrincipal.FRAME_HEIGHT);
                 g.drawString("COLUNA:     " + String.valueOf(PontuacaoJogo.COLUMNATTACKSCORE) + " $", xPosition, yPosition);
                 //g.setColor(new Color(0, 0, 0));
                 //g.setFont(new Font("Bitstream Charter", 4, 48));
@@ -186,8 +187,32 @@ public class CanvasJogo extends Canvas {
                         
                         //System.out.println(boatFinalPath);
                         //System.out.println("xPos: " + xPosition + "yPos: " + yPosition + "aux1: " + aux1 + "aux2" + aux2);
-                        yPosition = yPosition +  (int) (0.09 * InterfacePrincipal.FRAME_HEIGHT);
+                        yPosition +=  (int) (0.09 * InterfacePrincipal.FRAME_HEIGHT);
                 }
+        }
+        
+        public void drawNumberOfBoats(Graphics g){
+                int yPosition = (int) (0.575 * InterfacePrincipal.FRAME_HEIGHT);
+                // pula de 0.09
+                
+                int BoatsLifeBar = (int) (0.5 * MENU_WIDTH);
+                
+                for (int i = 0; i < 5; i++){
+                        int lifeBarWidth = 0;
+                        int xPosition = (int) (InterfacePrincipal.FRAME_WIDTH - 0.85*MENU_WIDTH);
+                        if (actions.getBoatsNumber(i) != 0){
+                                lifeBarWidth = (int) (BoatsLifeBar / actions.getBoatsNumber(i));
+                        }
+                        for (int j = 0; j < actions.getBoatsNumber(i); j++){
+                                
+                                g.setColor(new Color(240,52,52));
+                                g.fillRect(xPosition, yPosition, lifeBarWidth, (int) (InterfacePrincipal.FRAME_HEIGHT * 0.01));
+                                xPosition += (int) (lifeBarWidth + 0.01 * MENU_WIDTH);
+                                        
+                        }
+                        yPosition += (int) (0.09 * InterfacePrincipal.FRAME_HEIGHT);
+                }
+                
         }
         
 }
