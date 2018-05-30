@@ -70,9 +70,11 @@ public class InterfacePrincipal extends JFrame {
                                                         JOptionPane.showMessageDialog(null, "Área de ataque não válida!");
                                                 }
                                                 else{
-                                                        gameScore.RemainedScore(attackType);
-                                                        actions.setMatrixUserChoices(mousePressedBoardLocationX, mousePressedBoardLocationY,
-                                                                                     mouseReleasedBoardLocationX, mouseReleasedBoardLocationY);    
+                                                        if(gameScore.RemainedScore(attackType)){
+                                                                actions.setMatrixUserChoices(mousePressedBoardLocationX, mousePressedBoardLocationY,
+                                                                                             mouseReleasedBoardLocationX, mouseReleasedBoardLocationY);
+                                                        }
+                                                            
                                                 
                                                 }
                                         }

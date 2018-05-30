@@ -203,13 +203,15 @@ public class CanvasJogo extends Canvas {
                         if (actions.getBoatsNumber(i) != 0){
                                 lifeBarWidth = (int) (BoatsLifeBar / actions.getBoatsNumber(i));
                         }
+                        
                         for (int j = 0; j < actions.getBoatsNumber(i); j++){
                                 
                                 g.setColor(new Color(240,52,52));
-                                g.fillRect(xPosition, yPosition, lifeBarWidth, (int) (InterfacePrincipal.FRAME_HEIGHT * 0.01));
-                                xPosition += (int) (lifeBarWidth + 0.01 * MENU_WIDTH);
+                                g.fillRect(xPosition, yPosition, (int) (0.9 * lifeBarWidth), (int) (InterfacePrincipal.FRAME_HEIGHT * 0.01));
+                                xPosition += lifeBarWidth;
                                         
                         }
+                        
                         yPosition += (int) (0.09 * InterfacePrincipal.FRAME_HEIGHT);
                 }
                 

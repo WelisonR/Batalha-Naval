@@ -18,31 +18,36 @@ public final class PontuacaoJogo {
                 calculateScoreOfColumnAttack();
         }
         
-        public void RemainedScore(int attackType){
+        public boolean RemainedScore(int attackType){
                 switch (attackType) {
                         case AcoesJogador.POSITIONATTACK:
                                 if ((ACTUALSCORE - POSITIONATTACKSCORE) >= 0){
                                         ACTUALSCORE -= POSITIONATTACKSCORE;
+                                        return true;
                                 }
                                 break;
                         case AcoesJogador.AREAATTACK:
                                 if ((ACTUALSCORE - AREAATTACKSCORE) >= 0){
                                         ACTUALSCORE -= AREAATTACKSCORE;
+                                        return true;
                                 }
                                 break;
                         case AcoesJogador.LINEATTACK:
                                 if ((ACTUALSCORE - LINEATTACKSCORE) >= 0){
                                         ACTUALSCORE -= LINEATTACKSCORE;
+                                        return true;
                                 }
                                 break;
                         case AcoesJogador.COLUMNATTACK:
                                 if ((ACTUALSCORE - COLUMNATTACKSCORE) >= 0){
                                         ACTUALSCORE -= COLUMNATTACKSCORE;
+                                        return true;
                                 }
                                 break;
                         default:
                                 break;
                 }
+                return false;
         }
         
         public final void calculateNumberOfRectangles(){

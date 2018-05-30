@@ -39,7 +39,10 @@ public class AcoesJogador {
                 int deltaX = abs(x2-x1);
                 int deltaY = abs(y2-y1);
                 
-                if (deltaX == 0 && deltaY == 0){
+                if ((deltaX == 0 && deltaY == 0) && (matrixUserChoices[x1][y1] == 1 || matrixUserChoices[x1][y1] == -1)){
+                        return -1;
+                }
+                else if (deltaX == 0 && deltaY == 0){
                         return POSITIONATTACK;
                 }
                 else if (deltaX == 1 && deltaY == 1){
@@ -50,6 +53,9 @@ public class AcoesJogador {
                 }
                 else if (deltaY == 0 && deltaX == canvasNumberOfLines-1){
                         return COLUMNATTACK;
+                }
+                if ((deltaX == 0 && deltaY == 0) && (gameMatrix[x1][y1] == 1)){
+                        return -1;
                 }
                 else{
                         return -1;
