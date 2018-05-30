@@ -75,7 +75,7 @@ public class InterfacePrincipal extends JFrame {
                                                                                      mouseReleasedBoardLocationX, mouseReleasedBoardLocationY);    
                                                 
                                                 }
-                                        } 
+                                        }
                                 }
                                 
                                 if(actions.verifyWinner()){

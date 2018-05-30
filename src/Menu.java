@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 public class Menu extends javax.swing.JFrame {
 
-        private String PlayerName = "";
+        public static String playerName = "";
         public static String mapPath = "";
         JFileChooser mapFile = new JFileChooser();
         
@@ -101,6 +101,7 @@ public class Menu extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Digite um nickname!");
                 }
                 else{
+                        playerName = jTextFieldPlayerName.getText();
                         mapFile.showOpenDialog(null);
                         try{
                                 mapPath = mapFile.getSelectedFile().getAbsolutePath();
