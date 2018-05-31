@@ -9,7 +9,7 @@ public class MenuRanking extends javax.swing.JFrame {
         JLabel[] playerScoreLabel = new JLabel[10];
         
         public MenuRanking() {
-                getContentPane().setBackground(new Color(34, 49, 63)); // blue
+                getContentPane().setBackground(new Color(50, 49, 63)); // blue
                 
                 rank = new Ranking();
                 rank.readRanking();
@@ -24,6 +24,7 @@ public class MenuRanking extends javax.swing.JFrame {
 
                 jLabelRankingNumbers = new javax.swing.JLabel();
                 jLabelRankingImage = new javax.swing.JLabel();
+                jLabelBackground = new javax.swing.JLabel();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
                 setTitle("Ranking");
@@ -33,28 +34,19 @@ public class MenuRanking extends javax.swing.JFrame {
                 setMinimumSize(new java.awt.Dimension(400, 500));
                 setPreferredSize(new java.awt.Dimension(400, 500));
                 setResizable(false);
+                getContentPane().setLayout(null);
 
                 jLabelRankingNumbers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Numeros_Rank.png"))); // NOI18N
+                getContentPane().add(jLabelRankingNumbers);
+                jLabelRankingNumbers.setBounds(0, 80, 110, 410);
 
                 jLabelRankingImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logo_Ranking1.png"))); // NOI18N
+                getContentPane().add(jLabelRankingImage);
+                jLabelRankingImage.setBounds(100, 20, 210, 50);
 
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-                getContentPane().setLayout(layout);
-                layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(100, 100, 100)
-                                .addComponent(jLabelRankingImage, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabelRankingNumbers, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
-                layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabelRankingImage, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(jLabelRankingNumbers, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
-                );
+                jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/finalRankImage.jpg"))); // NOI18N
+                getContentPane().add(jLabelBackground);
+                jLabelBackground.setBounds(0, 0, 400, 520);
 
                 pack();
                 setLocationRelativeTo(null);
@@ -65,29 +57,30 @@ public class MenuRanking extends javax.swing.JFrame {
                 for (int i = 0; i < 10; i++){
                         playerNameLabel[i] = new JLabel();
                         playerNameLabel[i].setFont(new java.awt.Font("Bitstream Charter", 1, 24)); // NOI18N
-                        playerNameLabel[i].setForeground(new java.awt.Color(240, 52, 52)); // 240, 52, 52
+                        playerNameLabel[i].setForeground(new java.awt.Color(108,122,137)); // 240, 52, 52
                         getContentPane().add(playerNameLabel[i]);
                         playerNameLabel[i].setBounds(130, 90+40*i, 170, 40);
                         
                         String topNamePlayer = rank.getNamesTop10(i);
                         playerNameLabel[i].setText(topNamePlayer);
-                        System.out.println(playerNameLabel[i].getText());
+                        jLabelBackground.add(playerNameLabel[i]);
                 }
                 
                 for (int i = 0; i < 10; i++){
                         playerScoreLabel[i] = new JLabel();
                         playerScoreLabel[i].setFont(new java.awt.Font("Bitstream Charter", 1, 24)); // NOI18N
-                        playerScoreLabel[i].setForeground(new java.awt.Color(240, 52, 52)); // 240, 52, 52
+                        playerScoreLabel[i].setForeground(new java.awt.Color(108,122,137)); // 240, 52, 52
                         getContentPane().add(playerScoreLabel[i]);
                         playerScoreLabel[i].setBounds(300, 90+40*i, 170, 40);
                         
                         String topScorePlayer = Integer.toString(rank.getScoresTop10(i));
                         playerScoreLabel[i].setText(topScorePlayer);
-                        System.out.println(playerScoreLabel[i].getText());
+                        jLabelBackground.add(playerScoreLabel[i]);
                 }
         }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JLabel jLabelBackground;
         private javax.swing.JLabel jLabelRankingImage;
         private javax.swing.JLabel jLabelRankingNumbers;
         // End of variables declaration//GEN-END:variables

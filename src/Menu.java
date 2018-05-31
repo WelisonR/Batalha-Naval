@@ -91,9 +91,9 @@ public class Menu extends javax.swing.JFrame {
                 getContentPane().add(jLabelLogo);
                 jLabelLogo.setBounds(130, 110, 650, 89);
 
-                jLabelFundoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Blue_background.jpg"))); // NOI18N
+                jLabelFundoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/wallpaperImage.jpg"))); // NOI18N
                 getContentPane().add(jLabelFundoMenu);
-                jLabelFundoMenu.setBounds(0, 0, 1610, 850);
+                jLabelFundoMenu.setBounds(0, -250, 1610, 850);
 
                 pack();
                 setLocationRelativeTo(null);
