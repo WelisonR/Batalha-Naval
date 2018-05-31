@@ -16,7 +16,6 @@ public class AcoesJogador {
         private int canvasNumberOfRows;
         private Integer[] boatsNumber;
         
-        
         public AcoesJogador(LeitorMapa mapInformations){
                 this.mapInformations = mapInformations;
                 gameMatrix = mapInformations.getGameMatrix();

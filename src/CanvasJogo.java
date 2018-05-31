@@ -41,9 +41,9 @@ public class CanvasJogo extends Canvas {
         
         public void drawBoard(Graphics g){
                 // Prepare an ImageIcon
-                ImageIcon oceanWave = new ImageIcon("images/waves.gif");
-		ImageIcon iconShot = new ImageIcon("images/explosion.gif");
-                ImageIcon watterShot = new ImageIcon("images/bubbles.gif");
+                ImageIcon oceanWave = new ImageIcon(filePaths.WAVEANIMATIONPATH);
+		ImageIcon iconShot = new ImageIcon(filePaths.EXPLOSIONANIMATIONPATH);
+                ImageIcon watterShot = new ImageIcon(filePaths.BUBBLESANIMATIONPATH);
                 
 		// Prepare an Image object to be used by drawImage()
 		final Image imgShot = iconShot.getImage();
@@ -86,7 +86,7 @@ public class CanvasJogo extends Canvas {
 	
         
         public void drawFrameBoard(Graphics g){
-                ImageIcon gameFrameBoard = new ImageIcon("images/menuFrame.png");
+                ImageIcon gameFrameBoard = new ImageIcon(filePaths.MENUGAMEFRAMEPATH);
                 final Image imgGameFrameBoard = gameFrameBoard.getImage();
               
                 g.drawImage(imgGameFrameBoard, (InterfacePrincipal.FRAME_WIDTH - MENU_WIDTH), 0,
@@ -150,7 +150,7 @@ public class CanvasJogo extends Canvas {
         public void drawBoats(Graphics g){
                 int xPosition = (int) (InterfacePrincipal.FRAME_WIDTH - 0.85*MENU_WIDTH);
                 int yPosition = (int) (0.50 * InterfacePrincipal.FRAME_HEIGHT);
-                String boatPath = "images/boat";
+                String boatPath = filePaths.BOATSPATH;
                 
                 for (int i = 1; i <= 5; i++){
                         String boatFinalPath = boatPath + String.valueOf(i) +".png";

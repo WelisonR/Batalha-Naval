@@ -23,7 +23,7 @@ public class Ranking {
                 Scanner file = null;
                 
                 try{
-                        file = new Scanner(new File("src/Ranking/ranking.txt"));
+                        file = new Scanner(new File(filePaths.RANKINGFILEPATH));
                         
                         for (int i = 0; i < 2; i++){
                                 String trash = file.nextLine();
@@ -77,7 +77,7 @@ public class Ranking {
                         FileWriter fw = null;
                         PrintWriter pw = null;
                 try{
-                        fw = new FileWriter("src/Ranking/ranking.txt");
+                        fw = new FileWriter(filePaths.RANKINGFILEPATH);
                         pw = new PrintWriter(fw);
                         
                         pw.println("# GAME RANKING");

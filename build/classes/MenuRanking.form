@@ -45,7 +45,7 @@
     <Component class="javax.swing.JLabel" name="jLabelRankingNumbers">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagens/Numeros_Rank.png"/>
+          <Image iconType="3" name="/images/ranking_numbers.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -57,7 +57,7 @@
     <Component class="javax.swing.JLabel" name="jLabelRankingImage">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagens/Logo_Ranking1.png"/>
+          <Image iconType="3" name="/images/ranking_logo.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -69,7 +69,7 @@
     <Component class="javax.swing.JLabel" name="jLabelBackground">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagens/finalRankImage.jpg"/>
+          <Image iconType="3" name="/images/ranking_background.jpg"/>
         </Property>
       </Properties>
       <Constraints>

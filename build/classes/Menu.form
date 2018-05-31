@@ -103,7 +103,7 @@
     <Component class="javax.swing.JLabel" name="jLabelLogo">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagens/Logo_Batalha_Naval1.png"/>
+          <Image iconType="3" name="/images/menu_logo.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -115,7 +115,7 @@
     <Component class="javax.swing.JLabel" name="jLabelFundoMenu">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagens/wallpaperImage.jpg"/>
+          <Image iconType="3" name="/images/menu_background.jpg"/>
         </Property>
       </Properties>
       <Constraints>

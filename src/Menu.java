@@ -86,11 +86,11 @@ public class Menu extends javax.swing.JFrame {
                 getContentPane().add(jTextFieldPlayerName);
                 jTextFieldPlayerName.setBounds(170, 230, 570, 33);
 
-                jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logo_Batalha_Naval1.png"))); // NOI18N
+                jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu_logo.png"))); // NOI18N
                 getContentPane().add(jLabelLogo);
                 jLabelLogo.setBounds(130, 110, 650, 89);
 
-                jLabelFundoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/wallpaperImage.jpg"))); // NOI18N
+                jLabelFundoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu_background.jpg"))); // NOI18N
                 getContentPane().add(jLabelFundoMenu);
                 jLabelFundoMenu.setBounds(0, -250, 1610, 850);
 

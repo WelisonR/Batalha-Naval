@@ -33,15 +33,15 @@ public class MenuRanking extends javax.swing.JFrame {
                 setResizable(false);
                 getContentPane().setLayout(null);
 
-                jLabelRankingNumbers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Numeros_Rank.png"))); // NOI18N
+                jLabelRankingNumbers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ranking_numbers.png"))); // NOI18N
                 getContentPane().add(jLabelRankingNumbers);
                 jLabelRankingNumbers.setBounds(0, 80, 110, 410);
 
-                jLabelRankingImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logo_Ranking1.png"))); // NOI18N
+                jLabelRankingImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ranking_logo.png"))); // NOI18N
                 getContentPane().add(jLabelRankingImage);
                 jLabelRankingImage.setBounds(100, 20, 210, 50);
 
-                jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/finalRankImage.jpg"))); // NOI18N
+                jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ranking_background.jpg"))); // NOI18N
                 getContentPane().add(jLabelBackground);
                 jLabelBackground.setBounds(0, 0, 400, 520);
 
