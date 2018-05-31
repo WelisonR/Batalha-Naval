@@ -13,7 +13,6 @@ public class Menu extends javax.swing.JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//InterfacePrincipal frame = new InterfacePrincipal();
                                         Menu frame = new Menu();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -144,12 +143,8 @@ public class Menu extends javax.swing.JFrame {
         }//GEN-LAST:event_jTextFieldPlayerNameFocusLost
 
         private void jButtonRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRankingActionPerformed
-                // TODO add your handling code here:
                 MenuRanking rank1 = new MenuRanking();
                 rank1.setVisible(true);
-                //String rank = "";
-                
-                //JOptionPane.showMessageDialog(null, rank);
         }//GEN-LAST:event_jButtonRankingActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables

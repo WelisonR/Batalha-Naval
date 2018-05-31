@@ -10,9 +10,9 @@ public class InterfacePrincipal extends JFrame {
         
         public static final int FRAME_WIDTH = 900;
         public static final int FRAME_HEIGHT = 600;
+        
         private int mouseReleasedBoardLocationX, mouseReleasedBoardLocationY;
         private int mousePressedBoardLocationX, mousePressedBoardLocationY;
-        
         
         LeitorMapa mapInformations;
         PontuacaoJogo gameScore;
@@ -103,7 +103,6 @@ public class InterfacePrincipal extends JFrame {
                                 
                                 if (!(x > CanvasJogo.MARGIN && y > CanvasJogo.MARGIN) ||
                                     !(x < FRAME_WIDTH-CanvasJogo.MENU_WIDTH && y < FRAME_HEIGHT)){
-                                        //actions.setMatrixUserChoices(mousePressedBoardLocationX, mousePressedBoardLocationY);
                                          JOptionPane.showMessageDialog(null, "Jogada não aceita. Selecione uma área dentro do tabuleiro!");
                                 }
                                 
@@ -118,5 +117,4 @@ public class InterfacePrincipal extends JFrame {
 		});
 	}
         
-
 }

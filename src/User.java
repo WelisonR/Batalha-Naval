@@ -1,26 +1,26 @@
 
 public class User {
-        private String topUserName;
-        private int topUserScore;
+        private String userName;
+        private int userScore;
 
         public User(String topUserName, int topUserScore){
-                this.topUserName = topUserName;
-                this.topUserScore = topUserScore;
+                this.userName = topUserName;
+                this.userScore = topUserScore;
         }
                 
-        public String getTopUserName() {
-                return topUserName;
+        public String getUserName() {
+                return userName;
         }
 
-        public void setTopUserName(String topUserName) {
-                this.topUserName = topUserName;
+        public void setUserName(String userName) {
+                this.userName = userName;
         }
 
-        public int getTopUserScore() {
-                return topUserScore;
+        public int getUserScore() {
+                return userScore;
         }
 
-        public void setTopUserScore(int topUserscore) {
-                this.topUserScore = topUserscore;
+        public void setUserScore(int topUserscore) {
+                this.userScore = topUserscore;
         }
 }

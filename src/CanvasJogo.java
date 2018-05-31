@@ -10,34 +10,21 @@ import javax.swing.ImageIcon;
 
 public class CanvasJogo extends Canvas {
 	
-        //private LeitorMapa mapInformations;
 	private int canvasNumberOfRows;
 	private int canvasNumberOfLines;
         private AcoesJogador actions;
-        //private Integer[][] GameMatrix;
-        //private Integer[] BoatsNumber;
         
         public static final int MENU_WIDTH = 250;
         public static final int MARGIN = 0; // 10 - good number
         public final int RECT_WIDTH;
 	public final int RECT_HEIGHT;
-	
-	//private int [][] explosionMatrix;
         
         public CanvasJogo(AcoesJogador actions){
                 this.actions = actions;
-                //mapInformations = new LeitorMapa(filePath);
-                
-                
                 canvasNumberOfRows = LeitorMapa.getCanvasNumberOfRows();
                 canvasNumberOfLines = LeitorMapa.getCanvasNumberOfLines();
-                
-                //GameMatrix = mapInformations.getGameMatrix();
-                //BoatsNumber = mapInformations.getBoatsNumber();
-                
                 RECT_WIDTH = (InterfacePrincipal.FRAME_WIDTH - MENU_WIDTH-MARGIN) / canvasNumberOfRows;
                 RECT_HEIGHT = (InterfacePrincipal.FRAME_HEIGHT-MARGIN) / canvasNumberOfLines;
-                //explosionMatrix = new int[mapInformations.getCanvasNumberOfRows()][mapInformations.getCanvasNumberOfLines()];
         }
         
 	@Override
@@ -99,10 +86,10 @@ public class CanvasJogo extends Canvas {
 	
         
         public void drawFrameBoard(Graphics g){
-              ImageIcon gameFrameBoard = new ImageIcon("images/menuFrame.png");
-              final Image imgGameFrameBoard = gameFrameBoard.getImage();
+                ImageIcon gameFrameBoard = new ImageIcon("images/menuFrame.png");
+                final Image imgGameFrameBoard = gameFrameBoard.getImage();
               
-              g.drawImage(imgGameFrameBoard, (InterfacePrincipal.FRAME_WIDTH - MENU_WIDTH), 0,
+                g.drawImage(imgGameFrameBoard, (InterfacePrincipal.FRAME_WIDTH - MENU_WIDTH), 0,
                           MENU_WIDTH, InterfacePrincipal.FRAME_HEIGHT, null);
               
               
@@ -118,16 +105,13 @@ public class CanvasJogo extends Canvas {
         }
         
         public void drawPlayerPoints(Graphics g){
-                //Color blue = new Color(255, 255, 255);
                 int x = (int) (InterfacePrincipal.FRAME_WIDTH - 0.80*MENU_WIDTH);
                 int y = (int) (0.15 * InterfacePrincipal.FRAME_HEIGHT);
                 int rectWidth = (int) (0.66*MENU_WIDTH);
                 int rectHeight = (int) (0.12*InterfacePrincipal.FRAME_HEIGHT);
                 
-                //Color blue = new Color(1, 50, 67);
                 g.setColor(new Color(1, 50, 67));
                 g.fillRect(x, y, rectWidth, rectHeight);
-                //g.fillRect((int) (InterfacePrincipal.FRAME_WIDTH - 0.85*MENU_WIDTH), y, WIDTH, HEIGHT);
                 g.setFont(new Font("Bitstream Charter", 1, 48));
                 g.setColor(new Color(0, 0, 0)); // Madison
                 
@@ -161,15 +145,11 @@ public class CanvasJogo extends Canvas {
                 
                 yPosition = (int) (0.47 * InterfacePrincipal.FRAME_HEIGHT);
                 g.drawString("COLUNA:     " + String.valueOf(PontuacaoJogo.COLUMNATTACKSCORE) + " $", xPosition, yPosition);
-                //g.setColor(new Color(0, 0, 0));
-                //g.setFont(new Font("Bitstream Charter", 4, 48));
         }
         
         public void drawBoats(Graphics g){
                 int xPosition = (int) (InterfacePrincipal.FRAME_WIDTH - 0.85*MENU_WIDTH);
                 int yPosition = (int) (0.50 * InterfacePrincipal.FRAME_HEIGHT);
-    
-                
                 String boatPath = "images/boat";
                 
                 for (int i = 1; i <= 5; i++){
@@ -180,36 +160,26 @@ public class CanvasJogo extends Canvas {
                         
                         g.drawImage(imgBoat, xPosition, yPosition, (int) (MENU_WIDTH * (0.3 + 0.05 * i)),
                                     (int) (0.07*InterfacePrincipal.FRAME_HEIGHT), null);
-                        
-                        //g.setColor(new Color(255, 255, 255));
-                        //g.fillRect(xPosition, yPosition, aux1, aux2);
-                        
-                        
-                        //System.out.println(boatFinalPath);
-                        //System.out.println("xPos: " + xPosition + "yPos: " + yPosition + "aux1: " + aux1 + "aux2" + aux2);
                         yPosition +=  (int) (0.09 * InterfacePrincipal.FRAME_HEIGHT);
                 }
         }
         
         public void drawNumberOfBoats(Graphics g){
                 int yPosition = (int) (0.575 * InterfacePrincipal.FRAME_HEIGHT);
-                // pula de 0.09
-                
                 int BoatsLifeBar = (int) (0.5 * MENU_WIDTH);
                 
                 for (int i = 0; i < 5; i++){
                         int lifeBarWidth = 0;
                         int xPosition = (int) (InterfacePrincipal.FRAME_WIDTH - 0.85*MENU_WIDTH);
+                        
                         if (actions.getBoatsNumber(i) != 0){
                                 lifeBarWidth = (int) (BoatsLifeBar / actions.getBoatsNumber(i));
                         }
                         
-                        for (int j = 0; j < actions.getBoatsNumber(i); j++){
-                                
+                        for (int j = 0; j < actions.getBoatsNumber(i); j++){     
                                 g.setColor(new Color(240,52,52));
                                 g.fillRect(xPosition, yPosition, (int) (0.9 * lifeBarWidth), (int) (InterfacePrincipal.FRAME_HEIGHT * 0.01));
-                                xPosition += lifeBarWidth;
-                                        
+                                xPosition += lifeBarWidth;            
                         }
                         
                         yPosition += (int) (0.09 * InterfacePrincipal.FRAME_HEIGHT);

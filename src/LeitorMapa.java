@@ -47,7 +47,6 @@ public class LeitorMapa {
         public void readMatrixDimensions(){
                 String [] lengthMatrix = fileLines.get(1).split(" ");
                 
-                
                 canvasNumberOfRows = Integer.parseInt(lengthMatrix[0]);
                 canvasNumberOfLines = Integer.parseInt(lengthMatrix[1]);
         }
@@ -58,7 +57,6 @@ public class LeitorMapa {
                 for (int i = 0; i < canvasNumberOfLines; i++){
                         for (int j = 0; j < canvasNumberOfRows; j++){
                                 String line = fileLines.get(i+4);
-                                
                                 gameMatrix[i][j] = (int) (line.charAt(j) - '0');
                         }
                 }

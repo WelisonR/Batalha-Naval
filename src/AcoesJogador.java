@@ -1,5 +1,6 @@
 
 import static java.lang.Math.abs;
+import static java.lang.Math.abs;
 
 
 public class AcoesJogador {
@@ -143,7 +144,6 @@ public class AcoesJogador {
 
         public Integer getBoatsNumber(Integer x) {
                 return boatsNumber[x];
-        }
-        
+        }  
         
 }

@@ -1,5 +1,4 @@
 
-import java.awt.Color;
 import javax.swing.JLabel;
 
 public class MenuRanking extends javax.swing.JFrame {
@@ -9,8 +8,6 @@ public class MenuRanking extends javax.swing.JFrame {
         JLabel[] playerScoreLabel = new JLabel[10];
         
         public MenuRanking() {
-                getContentPane().setBackground(new Color(50, 49, 63)); // blue
-                
                 rank = new Ranking();
                 rank.readRanking();
                 rank.fillRankingInformation();
@@ -63,6 +60,7 @@ public class MenuRanking extends javax.swing.JFrame {
                         
                         String topNamePlayer = rank.getNamesTop10(i);
                         playerNameLabel[i].setText(topNamePlayer);
+                        
                         jLabelBackground.add(playerNameLabel[i]);
                 }
                 
@@ -75,6 +73,7 @@ public class MenuRanking extends javax.swing.JFrame {
                         
                         String topScorePlayer = Integer.toString(rank.getScoresTop10(i));
                         playerScoreLabel[i].setText(topScorePlayer);
+                        
                         jLabelBackground.add(playerScoreLabel[i]);
                 }
         }

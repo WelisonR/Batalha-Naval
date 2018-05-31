@@ -8,7 +8,6 @@ public final class PontuacaoJogo {
         public static int LINEATTACKSCORE;
         public static int COLUMNATTACKSCORE;
         
-        
         public PontuacaoJogo(){
                 ACTUALSCORE = INITIALSCORE;
                 calculateNumberOfRectangles();
@@ -55,15 +54,15 @@ public final class PontuacaoJogo {
         }
         
         public final void calculateScoreOfPositionAttack(){
-                POSITIONATTACKSCORE = (int) ((1.2 * INITIALSCORE)/NUMBEROFRECTANGLES);
+                POSITIONATTACKSCORE = (int) (1.2 * INITIALSCORE/NUMBEROFRECTANGLES);
         }
         public final void calculateScoreOfAreaAttack(){
                 AREAATTACKSCORE = (int) (3.8 * POSITIONATTACKSCORE);
         }
         public final void calculateScoreOfLineAttack(){
-                LINEATTACKSCORE = (int) ((POSITIONATTACKSCORE * 0.95) * LeitorMapa.getCanvasNumberOfLines());
+                LINEATTACKSCORE = (int) (POSITIONATTACKSCORE * 0.95 * LeitorMapa.getCanvasNumberOfLines());
         }
         public final void calculateScoreOfColumnAttack(){
-                COLUMNATTACKSCORE = (int) ((POSITIONATTACKSCORE * 0.95) * LeitorMapa.getCanvasNumberOfRows());
+                COLUMNATTACKSCORE = (int) (POSITIONATTACKSCORE * 0.95 * LeitorMapa.getCanvasNumberOfRows());
         }
 }

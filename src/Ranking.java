@@ -13,9 +13,9 @@ import java.util.Scanner;
 
 public class Ranking {
         
-        List<User> users = new ArrayList<>();
-        String[] namesTop10 = new String[10];
-        Integer[] ScoresTop10 = new Integer[10];
+        List<User> usersInformation = new ArrayList<>();
+        String[] rankUserNames = new String[10];
+        Integer[] rankUserScores = new Integer[10];
         
         public Ranking(){}
         
@@ -30,12 +30,10 @@ public class Ranking {
                         }
                         
                         while (file.hasNextLine()){
-                                String phrase;
-                                phrase = file.nextLine();
-                                phrase = phrase.replace("-", "");
+                                String phrase = file.nextLine().replace("-", "");
                                 String[] splitString = phrase.split(" ");
                                 
-                                users.add(new User(splitString[0], Integer.parseInt(splitString[1])));
+                                usersInformation.add(new User(splitString[0], Integer.parseInt(splitString[1])));
                         }
                 }
                 catch(FileNotFoundException e){
@@ -53,17 +51,19 @@ public class Ranking {
         }
         
         public void sortRanking(){
-                users.add(new User(Menu.playerName, PontuacaoJogo.ACTUALSCORE));
+                usersInformation.add(new User(Menu.playerName, PontuacaoJogo.ACTUALSCORE));
                 
-                Collections.sort(users, new Comparator<User>() {
+                Collections.sort(usersInformation, new Comparator<User>() {
                         @Override
                         public int compare(User o1, User o2) {
-                                int scoreCompare = o2.getTopUserScore() - o1.getTopUserScore();
+                                int scoreCompare = o2.getUserScore() - o1.getUserScore();
+                                
                                 if (scoreCompare != 0){
                                         return scoreCompare;
                                 }
                                 else{
-                                        int nameCompare = o1.getTopUserName().compareTo(o2.getTopUserName());
+                                        int nameCompare = o1.getUserName().compareTo(o2.getUserName());
+                                        
                                         return nameCompare;
                                 }
                         }
@@ -84,14 +84,14 @@ public class Ranking {
                         pw.println("# NICKNAME	     SCORE");
                         
                         int count = 0;
-                        for(User xUser: users){
+                        for(User xUser: usersInformation){
                                 if (count < 10){
-                                        int nameLength = xUser.getTopUserName().length();
-                                        pw.print(xUser.getTopUserName() + " "); 
+                                        int nameLength = xUser.getUserName().length();
+                                        pw.print(xUser.getUserName() + " "); 
                                         for (int i = 0; i < 21-(nameLength+1); i++){
                                                 pw.print("-");
                                         }
-                                        pw.println(xUser.getTopUserScore());
+                                        pw.println(xUser.getUserScore());
                                 }
                         count++;
                         }
@@ -112,24 +112,24 @@ public class Ranking {
         
         public void fillRankingInformation(){
                 int i = 0;
-                for(User xUser: users){
+                for(User xUser: usersInformation){
                         if(i < 10){
-                                namesTop10[i] = xUser.getTopUserName();
-                                ScoresTop10[i] = xUser.getTopUserScore();
+                                rankUserNames[i] = xUser.getUserName();
+                                rankUserScores[i] = xUser.getUserScore();
                         }
                         i++;
                 }
         }
         
         public String getNamesTop10(int i) {
-                return namesTop10[i];
+                return rankUserNames[i];
         }
 
         public Integer getScoresTop10(int i) {
-                return ScoresTop10[i];
+                return rankUserScores[i];
         }
 
-        public List<User> getUsers() {
-                return users;
+        public List<User> getUsersInformation() {
+                return usersInformation;
         }
 }
