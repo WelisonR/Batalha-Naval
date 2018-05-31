@@ -145,6 +145,8 @@ public class Menu extends javax.swing.JFrame {
 
         private void jButtonRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRankingActionPerformed
                 // TODO add your handling code here:
+                MenuRanking rank1 = new MenuRanking();
+                rank1.setVisible(true);
                 //String rank = "";
                 
                 //JOptionPane.showMessageDialog(null, rank);

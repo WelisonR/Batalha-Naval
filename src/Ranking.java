@@ -41,16 +41,14 @@ public class Ranking {
         }
         
         List<User> users = new ArrayList<>();
-        
-        private static String userName = Menu.playerName;
-        private static int userScore = PontuacaoJogo.ACTUALSCORE;
+        String[] namesTop10 = new String[10];
+        Integer[] ScoresTop10 = new Integer[10];
         
         public Ranking(){
-                userName = Menu.playerName;
-                userScore = PontuacaoJogo.ACTUALSCORE;
                 readRanking();
                 sortRanking();
                 writeRanking();
+                fillRankingInformation();
         }
         
         public void readRanking(){
@@ -140,8 +138,31 @@ public class Ranking {
                                 pw.close();
                         }
                         catch(Exception e){
-                                System.out.println("Could not close file!");
+                                System.out.println("Não foi possível fechar o arquivo!");
                         }
                 }
+        }
+        
+        public void fillRankingInformation(){
+                int i = 0;
+                for(User xUser: users){
+                        if(i < 10){
+                                namesTop10[i] = xUser.topUserName;
+                                ScoresTop10[i] = xUser.topUserScore;
+                        }
+                        i++;
+                }
+        }
+        
+        public String getNamesTop10(int i) {
+                return namesTop10[i];
+        }
+
+        public Integer getScoresTop10(int i) {
+                return ScoresTop10[i];
+        }
+
+        public List<User> getUsers() {
+                return users;
         }
 }
