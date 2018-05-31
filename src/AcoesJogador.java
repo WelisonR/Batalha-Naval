@@ -109,6 +109,9 @@ public class AcoesJogador {
                 
                 if (winner == true){
                         Ranking r1 = new Ranking();
+                        r1.readRanking();
+                        r1.sortRanking();
+                        r1.writeRanking();
                 }
                 
                 return winner;

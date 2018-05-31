@@ -45,10 +45,10 @@ public class Ranking {
         Integer[] ScoresTop10 = new Integer[10];
         
         public Ranking(){
-                readRanking();
-                sortRanking();
-                writeRanking();
-                fillRankingInformation();
+                //readRanking();
+                //sortRanking();
+                //writeRanking();
+                //fillRankingInformation();
         }
         
         public void readRanking(){
@@ -82,11 +82,10 @@ public class Ranking {
                         }
                 }
                 
-                users.add(new User(Menu.playerName, PontuacaoJogo.ACTUALSCORE));
         }
         
         public void sortRanking(){
-                
+                users.add(new User(Menu.playerName, PontuacaoJogo.ACTUALSCORE));
                 
                 Collections.sort(users, new Comparator<User>() {
                         @Override
