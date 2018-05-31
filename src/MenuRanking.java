@@ -23,7 +23,7 @@ public class MenuRanking extends javax.swing.JFrame {
                 jLabelRankingImage = new javax.swing.JLabel();
                 jLabelBackground = new javax.swing.JLabel();
 
-                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
                 setTitle("Ranking");
                 setBackground(new java.awt.Color(1, 50, 67));
                 setForeground(new java.awt.Color(1, 50, 67));

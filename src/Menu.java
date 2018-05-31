@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.EventQueue;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -9,27 +8,20 @@ public class Menu extends javax.swing.JFrame {
         public static String mapPath = "";
         JFileChooser mapFile = new JFileChooser();
         
-        public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-                                        Menu frame = new Menu();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-        
-        public Menu() {
+        // Pattern Singleton 
+        private static Menu frame = new Menu();
+        private Menu() {
                 initComponents();
                 jTextFieldPlayerName.setBackground(new Color(0, 0, 0, 196)); // transparent with gradient
                 jButtonPlay.setBackground(new Color(40, 20, 45)); // purple
                 jButtonRanking.setBackground(new Color(50, 30, 55)); // purple
                 
         }
-
+        
+        public static Menu getInstance(){
+                return frame;
+        }
+        
         @SuppressWarnings("unchecked")
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {

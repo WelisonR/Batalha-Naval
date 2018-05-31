@@ -17,8 +17,15 @@ public class CanvasThread extends Thread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			canvas.paint(canvas.getGraphics());
+			if (running == true){
+                                canvas.paint(canvas.getGraphics());
+                        }
+                                
 		}
 	}
+        
+        public void setRunning(boolean running) {
+                this.running = running;
+        }
 
 }

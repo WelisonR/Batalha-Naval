@@ -2,6 +2,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -28,7 +30,7 @@ public class InterfacePrincipal extends JFrame {
                 canvas = new CanvasJogo(actions);
                 updateScreenThread = new CanvasThread(canvas);
                 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 setResizable(false);
 		
 		getContentPane().setLayout(new BorderLayout());
@@ -115,6 +117,16 @@ public class InterfacePrincipal extends JFrame {
 			public void mouseExited(MouseEvent e) {}
 
 		});
+                
+                this.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosing(WindowEvent e){
+                                updateScreenThread.setRunning(false);
+                                Menu frame = Menu.getInstance();
+                                frame.setVisible(true);
+                        }
+                
+                });
 	}
         
 }
