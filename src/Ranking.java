@@ -13,43 +13,11 @@ import java.util.Scanner;
 
 public class Ranking {
         
-        public class User{
-                String topUserName;
-                int topUserScore;
-
-                public User(String topUserName, int topUserScore){
-                        this.topUserName = topUserName;
-                        this.topUserScore = topUserScore;
-                }
-                
-                public String getTopUserName() {
-                        return topUserName;
-                }
-
-                public void setTopUserName(String topUserName) {
-                        this.topUserName = topUserName;
-                }
-
-                public int getTopUserScore() {
-                        return topUserScore;
-                }
-
-                public void setTopUserScore(int topUserscore) {
-                        this.topUserScore = topUserscore;
-                }   
-                
-        }
-        
         List<User> users = new ArrayList<>();
         String[] namesTop10 = new String[10];
         Integer[] ScoresTop10 = new Integer[10];
         
-        public Ranking(){
-                //readRanking();
-                //sortRanking();
-                //writeRanking();
-                //fillRankingInformation();
-        }
+        public Ranking(){}
         
         public void readRanking(){
                 Scanner file = null;
@@ -118,12 +86,12 @@ public class Ranking {
                         int count = 0;
                         for(User xUser: users){
                                 if (count < 10){
-                                        int nameLength = xUser.topUserName.length();
-                                        pw.print(xUser.topUserName + " "); 
+                                        int nameLength = xUser.getTopUserName().length();
+                                        pw.print(xUser.getTopUserName() + " "); 
                                         for (int i = 0; i < 21-(nameLength+1); i++){
                                                 pw.print("-");
                                         }
-                                        pw.println(xUser.topUserScore);
+                                        pw.println(xUser.getTopUserScore());
                                 }
                         count++;
                         }
@@ -146,8 +114,8 @@ public class Ranking {
                 int i = 0;
                 for(User xUser: users){
                         if(i < 10){
-                                namesTop10[i] = xUser.topUserName;
-                                ScoresTop10[i] = xUser.topUserScore;
+                                namesTop10[i] = xUser.getTopUserName();
+                                ScoresTop10[i] = xUser.getTopUserScore();
                         }
                         i++;
                 }

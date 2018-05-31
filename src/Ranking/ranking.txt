@@ -1,6 +1,7 @@
 # GAME RANKING
 # NICKNAME	     SCORE
 GOOD ----------------3276
+xMyth ---------------2976
 XMTYHZ --------------2676
 Profile0 ------------0
 Profile1 ------------0
@@ -9,4 +10,3 @@ Profile3 ------------0
 Profile4 ------------0
 Profile5 ------------0
 Profile6 ------------0
-Profile7 ------------0
