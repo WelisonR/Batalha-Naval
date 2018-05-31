@@ -107,6 +107,10 @@ public class AcoesJogador {
                         }
                 }
                 
+                if (winner == true){
+                        Ranking r1 = new Ranking();
+                }
+                
                 return winner;
         }
         

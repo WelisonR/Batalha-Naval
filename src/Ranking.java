@@ -121,9 +121,15 @@ public class Ranking {
                         int count = 0;
                         for(User xUser: users){
                                 if (count < 10){
-                                        System.out.println(xUser.topUserName + " ------------" + xUser.topUserScore);     
+                                        int nameLength = xUser.topUserName.length();
+                                        pw.print(xUser.topUserName + " "); 
+                                        for (int i = 0; i < 21-(nameLength+1); i++){
+                                                pw.print("-");
+                                        }
+                                        pw.println(xUser.topUserScore);
                                 }
-                }
+                        count++;
+                        }
                         
                 }
                 catch(IOException e){
