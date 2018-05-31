@@ -66,6 +66,11 @@ public class Menu extends javax.swing.JFrame {
                 jButtonRanking.setFont(new java.awt.Font("Bitstream Charter", 1, 24)); // NOI18N
                 jButtonRanking.setForeground(new java.awt.Color(0, 0, 0));
                 jButtonRanking.setText("RANKING");
+                jButtonRanking.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                jButtonRankingActionPerformed(evt);
+                        }
+                });
                 getContentPane().add(jButtonRanking);
                 jButtonRanking.setBounds(310, 420, 320, 45);
 
@@ -137,6 +142,13 @@ public class Menu extends javax.swing.JFrame {
                         jTextFieldPlayerName.setText("Digite o seu nickname");
                 }
         }//GEN-LAST:event_jTextFieldPlayerNameFocusLost
+
+        private void jButtonRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRankingActionPerformed
+                // TODO add your handling code here:
+                //String rank = "";
+                
+                //JOptionPane.showMessageDialog(null, rank);
+        }//GEN-LAST:event_jButtonRankingActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton jButtonPlay;
