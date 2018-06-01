@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,10 +21,12 @@ public class Ranking {
         public Ranking(){}
         
         public void readRanking(){
+                
                 Scanner file = null;
                 
                 try{
-                        file = new Scanner(new File(filePaths.RANKINGFILEPATH));
+                        
+                        file = new Scanner (new File(filePaths.RANKINGFILEPATH));
                         
                         for (int i = 0; i < 2; i++){
                                 String trash = file.nextLine();
@@ -36,7 +39,7 @@ public class Ranking {
                                 usersInformation.add(new User(splitString[0], Integer.parseInt(splitString[1])));
                         }
                 }
-                catch(FileNotFoundException e){
+                catch(Exception e){
                         System.out.println("Could not found file!");
                 }
                 finally{
