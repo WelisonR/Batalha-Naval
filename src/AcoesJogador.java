@@ -117,7 +117,7 @@ public class AcoesJogador {
                 }
                 
                 verifyDestroyedBoatsOnLines();
-                //verifyDestroyedBoatsOnRows();
+                verifyDestroyedBoatsOnRows();
                 
         }
         
@@ -160,6 +160,11 @@ public class AcoesJogador {
                                         }
                                 }
                                 
+                                if (gameMatrix[i][j] == 0){
+                                        start = 0;
+                                        startCopy = 0;
+                                }
+                                
                                 if (start > 0 && booleanMatrixUserChoices[i][j] == 1){
                                         start--;
                                 }
@@ -188,14 +193,81 @@ public class AcoesJogador {
                                                 booleanFoundedBoats[i][j-3] = 1;
                                         }
                                         else if (startCopy == 5){
-                                                System.out.println("flag");
                                                 boatsNumber[4] -= 1;
-                                                System.out.println(boatsNumber[4]);
                                                 booleanFoundedBoats[i][j] = 1;
                                                 booleanFoundedBoats[i][j-1] = 1;
                                                 booleanFoundedBoats[i][j-2] = 1;
                                                 booleanFoundedBoats[i][j-3] = 1;
                                                 booleanFoundedBoats[i][j-4] = 1;
+                                        }
+                                        
+                                        
+                                        
+                                        start = 0;
+                                        startCopy = 0;
+                                }
+                        }
+                        
+                }
+                
+                
+                    
+        }
+        
+        public void verifyDestroyedBoatsOnRows(){
+                
+                for (int i = 0; i < canvasNumberOfRows; i++){
+                        int start = 0;
+                        int startCopy = 0;
+                        for (int j = 0; j < canvasNumberOfLines; j++){
+                                if (gameMatrix[j][i] != 0 && booleanMatrixUserChoices[j][i] == 1 && booleanFoundedBoats[j][i] == 0){
+                                        if (startCopy != gameMatrix[j][i] || start == 0){
+                                                start = gameMatrix[j][i]+1;
+                                                startCopy = gameMatrix[j][i];
+                                        }
+                                }
+                                
+                                if (gameMatrix[j][i] == 0){
+                                        start = 0;
+                                        startCopy = 0;
+                                }
+                                
+                                if (start > 0 && booleanMatrixUserChoices[j][i] == 1){
+                                        start--;
+                                }
+                                
+                                if (start == 1){
+                                        if (startCopy == 1){
+                                                boatsNumber[0] -= 1;
+                                                booleanFoundedBoats[j][i] = 1;
+                                        }
+                                        else if (startCopy == 2){
+                                                boatsNumber[1] -= 1;
+                                                booleanFoundedBoats[j][i] = 1;
+                                                booleanFoundedBoats[j-1][i] = 1;
+                                        }
+                                        else if (startCopy == 3){
+                                                boatsNumber[2] -= 1;
+                                                booleanFoundedBoats[j][i] = 1;
+                                                booleanFoundedBoats[j-1][i] = 1;
+                                                booleanFoundedBoats[j-2][i] = 1;
+                                        }
+                                        else if (startCopy == 4){
+                                                boatsNumber[3] -= 1;
+                                                booleanFoundedBoats[j][i] = 1;
+                                                booleanFoundedBoats[j-1][i] = 1;
+                                                booleanFoundedBoats[j-2][i] = 1;
+                                                booleanFoundedBoats[j-3][i] = 1;
+                                        }
+                                        else if (startCopy == 5){
+                                                System.out.println("flag");
+                                                boatsNumber[4] -= 1;
+                                                System.out.println(boatsNumber[4]);
+                                                booleanFoundedBoats[j][i] = 1;
+                                                booleanFoundedBoats[j-1][i] = 1;
+                                                booleanFoundedBoats[j-2][i] = 1;
+                                                booleanFoundedBoats[j-3][i] = 1;
+                                                booleanFoundedBoats[j-4][i] = 1;
                                         }
                                         
                                         start = 0;
@@ -206,7 +278,7 @@ public class AcoesJogador {
                         }
                         
                 }
-                    
+                
         }
         
         public int getMatrixUserChoices(int x, int y) {
