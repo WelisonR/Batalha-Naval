@@ -127,6 +127,10 @@ public class CanvasJogo extends Canvas {
                 int rectWidth = (int) (0.63*MENU_WIDTH);
                 int rectHeight = (int) (0.55*InterfacePrincipal.FRAME_HEIGHT);
                 
+                // x = (int) (InterfacePrincipal.FRAME_WIDTH - 0.85*MENU_WIDTH);
+                // 
+                
+                //g.setColor(new Color(1, 50, 67));
                 g.setColor(new Color(1, 50, 67));
                 g.fillRect(x, y, rectWidth, rectHeight);
                 
@@ -148,6 +152,15 @@ public class CanvasJogo extends Canvas {
         }
         
         public void drawBoats(Graphics g){
+                
+                int x = (int) (InterfacePrincipal.FRAME_WIDTH - 0.85*MENU_WIDTH);
+                int y =  (int) (0.93 * InterfacePrincipal.FRAME_HEIGHT);
+                int rectWidth = (int) (0.50*MENU_WIDTH);
+                int rectHeight = (int) (0.02*InterfacePrincipal.FRAME_HEIGHT);
+                
+                g.setColor(new Color(1, 50, 67));
+                g.fillRect(x, y, rectWidth, rectHeight);
+                
                 int xPosition = (int) (InterfacePrincipal.FRAME_WIDTH - 0.85*MENU_WIDTH);
                 int yPosition = (int) (0.50 * InterfacePrincipal.FRAME_HEIGHT);
                 String boatPath = filePaths.BOATSPATH;

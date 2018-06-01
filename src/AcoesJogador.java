@@ -11,6 +11,8 @@ public class AcoesJogador {
         
         private LeitorMapa mapInformations;
         private int [][] matrixUserChoices;
+        private int [][] booleanMatrixUserChoices;
+        private int [][] booleanFoundedBoats;
         private Integer[][] gameMatrix;
         private int canvasNumberOfLines;
         private int canvasNumberOfRows;
@@ -24,9 +26,11 @@ public class AcoesJogador {
                 canvasNumberOfRows = LeitorMapa.getCanvasNumberOfRows();
                 canvasNumberOfLines = LeitorMapa.getCanvasNumberOfLines();
                 initializeMatrixUserChoices();
+                initializeBooleanMatrixUserChoices();
+                initializeBooleanFoundedBoats();
         }
         
-        private void initializeMatrixUserChoices(){
+        public void initializeMatrixUserChoices(){
                 matrixUserChoices = new int[canvasNumberOfLines][canvasNumberOfRows];
                 for (int i = 0; i < canvasNumberOfLines; i++){
                         for (int j = 0; j < canvasNumberOfRows; j++){
@@ -35,6 +39,23 @@ public class AcoesJogador {
                 }
         }
         
+        public void initializeBooleanMatrixUserChoices(){
+                booleanMatrixUserChoices = new int[canvasNumberOfLines][canvasNumberOfRows];
+                for (int i = 0; i < canvasNumberOfLines; i++){
+                        for (int j = 0; j < canvasNumberOfRows; j++){
+                                booleanMatrixUserChoices[i][j] = 0;
+                        }
+                }
+        }
+        
+        public void initializeBooleanFoundedBoats(){
+                booleanFoundedBoats = new int[canvasNumberOfLines][canvasNumberOfRows];
+                for (int i = 0; i < canvasNumberOfLines; i++){
+                        for (int j = 0; j < canvasNumberOfRows; j++){
+                                booleanFoundedBoats[i][j] = 0;
+                        }
+                }
+        }
         public int verifyPlayerMovement(int x1, int y1, int x2, int y2){
                 int deltaX = abs(x2-x1);
                 int deltaY = abs(y2-y1);
@@ -87,12 +108,16 @@ public class AcoesJogador {
                         for(int j = menorY; j <= maiorY; j++){
                                 if(gameMatrix[i][j] > 0){
                                         matrixUserChoices[i][j] = 1;
+                                        booleanMatrixUserChoices[i][j] = 1;
                                 }
                                 else{
                                         matrixUserChoices[i][j] = -1;
                                 }
                         }
                 }
+                
+                verifyDestroyedBoatsOnLines();
+                //verifyDestroyedBoatsOnRows();
                 
         }
         
@@ -119,6 +144,69 @@ public class AcoesJogador {
         
         public boolean verifyLooser(){
                 return (PontuacaoJogo.ACTUALSCORE - PontuacaoJogo.POSITIONATTACKSCORE) < 0;
+        }
+        
+        public void verifyDestroyedBoatsOnLines(){
+                
+                
+                for (int i = 0; i < canvasNumberOfLines; i++){
+                        int start = 0;
+                        int startCopy = 0;
+                        for (int j = 0; j < canvasNumberOfRows; j++){
+                                if (gameMatrix[i][j] != 0 && booleanMatrixUserChoices[i][j] == 1 && booleanFoundedBoats[i][j] == 0){
+                                        if (startCopy != gameMatrix[i][j] || start == 0){
+                                                start = gameMatrix[i][j]+1;
+                                                startCopy = gameMatrix[i][j];
+                                        }
+                                }
+                                
+                                if (start > 0 && booleanMatrixUserChoices[i][j] == 1){
+                                        start--;
+                                }
+                                
+                                if (start == 1){
+                                        if (startCopy == 1){
+                                                boatsNumber[0] -= 1;
+                                                booleanFoundedBoats[i][j] = 1;
+                                        }
+                                        else if (startCopy == 2){
+                                                boatsNumber[1] -= 1;
+                                                booleanFoundedBoats[i][j] = 1;
+                                                booleanFoundedBoats[i][j-1] = 1;
+                                        }
+                                        else if (startCopy == 3){
+                                                boatsNumber[2] -= 1;
+                                                booleanFoundedBoats[i][j] = 1;
+                                                booleanFoundedBoats[i][j-1] = 1;
+                                                booleanFoundedBoats[i][j-2] = 1;
+                                        }
+                                        else if (startCopy == 4){
+                                                boatsNumber[3] -= 1;
+                                                booleanFoundedBoats[i][j] = 1;
+                                                booleanFoundedBoats[i][j-1] = 1;
+                                                booleanFoundedBoats[i][j-2] = 1;
+                                                booleanFoundedBoats[i][j-3] = 1;
+                                        }
+                                        else if (startCopy == 5){
+                                                System.out.println("flag");
+                                                boatsNumber[4] -= 1;
+                                                System.out.println(boatsNumber[4]);
+                                                booleanFoundedBoats[i][j] = 1;
+                                                booleanFoundedBoats[i][j-1] = 1;
+                                                booleanFoundedBoats[i][j-2] = 1;
+                                                booleanFoundedBoats[i][j-3] = 1;
+                                                booleanFoundedBoats[i][j-4] = 1;
+                                        }
+                                        
+                                        start = 0;
+                                        startCopy = 0;
+                                }
+                                
+
+                        }
+                        
+                }
+                    
         }
         
         public int getMatrixUserChoices(int x, int y) {
