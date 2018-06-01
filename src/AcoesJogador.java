@@ -1,6 +1,5 @@
 
 import static java.lang.Math.abs;
-import static java.lang.Math.abs;
 
 
 public class AcoesJogador {

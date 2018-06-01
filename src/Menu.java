@@ -98,26 +98,30 @@ public class Menu extends javax.swing.JFrame {
                 }
                 else{
                         playerName = jTextFieldPlayerName.getText();
-                        mapFile.showOpenDialog(null);
-                        try{
-                                mapPath = mapFile.getSelectedFile().getAbsolutePath();
-                        }
-                        catch(Exception e){
-                                occurredAnError = true;
-                                JOptionPane.showMessageDialog(null, "Mapa do jogo não encontrado!");
-                        }
+                        int sucess = mapFile.showOpenDialog(null);
+                        if(sucess == JFileChooser.APPROVE_OPTION){
+                                try{
+                                        mapPath = mapFile.getSelectedFile().getAbsolutePath();
+                                }
+                                catch(Exception e){
+                                        occurredAnError = true;
+                                        JOptionPane.showMessageDialog(null, "Selecione um mapa de jogo em 'gameMaps'!");
+                                }
                         
-                        if (!occurredAnError && !mapPath.substring(mapPath.length()-9, mapPath.length()-9+3).equals("map")){
-                                occurredAnError = true;
-                                JOptionPane.showMessageDialog(null, "O Arquivo selecionado não corresponde ao mapa do jogo!");
-                        }
+                                if (!occurredAnError && !mapPath.substring(mapPath.length()-9, mapPath.length()-9+3).equals("map")){
+                                        occurredAnError = true;
+                                        JOptionPane.showMessageDialog(null, "O Arquivo selecionado não corresponde ao mapa do jogo!");
+                                }
                         
-                        if (!occurredAnError){
-                                InterfacePrincipal frame = new InterfacePrincipal();
-                                frame.setVisible(true);
-                                setVisible(false);   
+                                if (!occurredAnError){
+                                        InterfacePrincipal frame = new InterfacePrincipal();
+                                        frame.setVisible(true);
+                                        setVisible(false);   
+                                }
                         }
-                        
+                        else if (sucess == JFileChooser.CANCEL_OPTION){
+                                JOptionPane.showMessageDialog(null, "Selecione um mapa de jogo em 'gameMaps'!");
+                        }
                 }
         }//GEN-LAST:event_jButtonPlayActionPerformed
 
