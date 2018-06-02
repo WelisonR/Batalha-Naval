@@ -15,6 +15,7 @@ public class Menu extends javax.swing.JFrame {
                 jTextFieldPlayerName.setBackground(new Color(0, 0, 0, 196)); // transparent with gradient
                 jButtonPlay.setBackground(new Color(40, 20, 45)); // purple
                 jButtonRanking.setBackground(new Color(50, 30, 55)); // purple
+                jButtonTutorial.setBackground(new Color(50, 30, 55)); // purple
                 
         }
         
@@ -30,6 +31,7 @@ public class Menu extends javax.swing.JFrame {
                 jButtonRanking = new javax.swing.JButton();
                 jTextFieldPlayerName = new javax.swing.JTextField();
                 jLabelLogo = new javax.swing.JLabel();
+                jButtonTutorial = new javax.swing.JButton();
                 jLabelFundoMenu = new javax.swing.JLabel();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,7 +65,7 @@ public class Menu extends javax.swing.JFrame {
                         }
                 });
                 getContentPane().add(jButtonRanking);
-                jButtonRanking.setBounds(310, 420, 320, 45);
+                jButtonRanking.setBounds(310, 430, 320, 40);
 
                 jTextFieldPlayerName.setFont(new java.awt.Font("Bitstream Charter", 1, 18)); // NOI18N
                 jTextFieldPlayerName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -76,11 +78,23 @@ public class Menu extends javax.swing.JFrame {
                         }
                 });
                 getContentPane().add(jTextFieldPlayerName);
-                jTextFieldPlayerName.setBounds(170, 230, 570, 33);
+                jTextFieldPlayerName.setBounds(170, 220, 570, 33);
 
                 jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu_logo.png"))); // NOI18N
                 getContentPane().add(jLabelLogo);
-                jLabelLogo.setBounds(130, 110, 650, 89);
+                jLabelLogo.setBounds(130, 90, 650, 89);
+
+                jButtonTutorial.setBackground(new java.awt.Color(236, 100, 75));
+                jButtonTutorial.setFont(new java.awt.Font("Bitstream Charter", 1, 24)); // NOI18N
+                jButtonTutorial.setForeground(new java.awt.Color(0, 0, 0));
+                jButtonTutorial.setText("TUTORIAL");
+                jButtonTutorial.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                jButtonTutorialActionPerformed(evt);
+                        }
+                });
+                getContentPane().add(jButtonTutorial);
+                jButtonTutorial.setBounds(310, 490, 320, 40);
 
                 jLabelFundoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu_background.jpg"))); // NOI18N
                 getContentPane().add(jLabelFundoMenu);
@@ -143,9 +157,15 @@ public class Menu extends javax.swing.JFrame {
                 rank1.setVisible(true);
         }//GEN-LAST:event_jButtonRankingActionPerformed
 
+        private void jButtonTutorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTutorialActionPerformed
+                tutorialFrame tutorial = new tutorialFrame();
+                tutorial.setVisible(true);
+        }//GEN-LAST:event_jButtonTutorialActionPerformed
+
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton jButtonPlay;
         private javax.swing.JButton jButtonRanking;
+        private javax.swing.JButton jButtonTutorial;
         private javax.swing.JLabel jLabelFundoMenu;
         private javax.swing.JLabel jLabelLogo;
         private javax.swing.JTextField jTextFieldPlayerName;
