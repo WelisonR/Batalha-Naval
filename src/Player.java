@@ -1,10 +1,10 @@
 
 // class to receive the player informations (name and score)
-public class User {
+public class Player {
         private String userName;
         private int userScore;
 
-        public User(String topUserName, int topUserScore){
+        public Player(String topUserName, int topUserScore){
                 this.userName = topUserName;
                 this.userScore = topUserScore;
         }

@@ -1,6 +1,6 @@
 
 // class that saves the paths of used files in this project. Just for facilitates in changes
-public class filePaths {
+public class FilePaths {
         // images
         public static final String BOATSPATH = "images/boatLength";
         public static final String MENUBACKGROUNDPATH = "images/menu_background.jpg";

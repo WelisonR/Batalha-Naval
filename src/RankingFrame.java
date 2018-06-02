@@ -2,14 +2,14 @@
 import javax.swing.JLabel;
 
 // class responsible to show the menu ranking
-public class MenuRanking extends javax.swing.JFrame {
-        Ranking rank;
+public class RankingFrame extends javax.swing.JFrame {
+        RankingProcessor rank;
         JLabel[] playerNameLabel = new JLabel[10];
         JLabel[] playerScoreLabel = new JLabel[10];
         
-        public MenuRanking() {
+        public RankingFrame() {
                 // load and process the ranking informations
-                rank = new Ranking();
+                rank = new RankingProcessor();
                 rank.readRanking();
                 rank.fillRankingInformation();
                 

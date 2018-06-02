@@ -1,8 +1,8 @@
 
 // simple frame just to show the game image tutorial
-public class tutorialFrame extends javax.swing.JFrame {
+public class TutorialFrame extends javax.swing.JFrame {
 
-        public tutorialFrame() {
+        public TutorialFrame() {
                 initComponents();
         }
 
@@ -14,7 +14,6 @@ public class tutorialFrame extends javax.swing.JFrame {
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
                 setTitle("Naval Warfare 2.0 - Tutorial");
-                setMaximumSize(new java.awt.Dimension(600, 450));
                 setMinimumSize(new java.awt.Dimension(600, 450));
                 setResizable(false);
                 getContentPane().setLayout(null);

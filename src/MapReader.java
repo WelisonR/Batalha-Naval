@@ -1,3 +1,4 @@
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -6,16 +7,16 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 // class responsible to read and store the game maps informations
-public class LeitorMapa {
+public class MapReader {
         public static final int NUMBEROFBOATS = 5;
         
         private List<String> fileLines = new ArrayList<>();
         private Integer[][] gameMatrix;
         private Integer[] boatsNumber;
-        private static int canvasNumberOfRows;
+        private static int canvasNumberOfColumns;
 	private static int canvasNumberOfLines;
         
-        public LeitorMapa(String filePath){
+        public MapReader(String filePath){
                 fileCopy(filePath);
                 readMatrixDimensions();
                 readGameMatrix();
@@ -49,15 +50,15 @@ public class LeitorMapa {
         public void readMatrixDimensions(){
                 String [] lengthMatrix = fileLines.get(1).split(" ");
                 
-                canvasNumberOfRows = Integer.parseInt(lengthMatrix[0]);
+                canvasNumberOfColumns = Integer.parseInt(lengthMatrix[0]);
                 canvasNumberOfLines = Integer.parseInt(lengthMatrix[1]);
         }
         
         public void readGameMatrix(){
-                gameMatrix = new Integer[canvasNumberOfLines][canvasNumberOfRows];
+                gameMatrix = new Integer[canvasNumberOfLines][canvasNumberOfColumns];
                 
                 for (int i = 0; i < canvasNumberOfLines; i++){
-                        for (int j = 0; j < canvasNumberOfRows; j++){
+                        for (int j = 0; j < canvasNumberOfColumns; j++){
                                 String line = fileLines.get(i+4);
                                 gameMatrix[i][j] = (int) (line.charAt(j) - '0');
                         }
@@ -75,8 +76,8 @@ public class LeitorMapa {
                 
         }
         
-        public static int getCanvasNumberOfRows() {
-                return canvasNumberOfRows;
+        public static int getCanvasNumberOfColumns() {
+                return canvasNumberOfColumns;
         }
 
         public static int getCanvasNumberOfLines() {

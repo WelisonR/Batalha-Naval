@@ -11,17 +11,17 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 // class to receive, process and update the game ranking
-public class Ranking {
-        List<User> usersInformation = new ArrayList<>();
-        String[] rankUserNames = new String[10];
-        Integer[] rankUserScores = new Integer[10];
+public class RankingProcessor {
+        List<Player> playersInformation = new ArrayList<>();
+        String[] rankPlayersNames = new String[10];
+        Integer[] rankPlayersScores = new Integer[10];
         
         // responsible to receive all the informations of ranking.txt file
         public void readRanking(){
                 Scanner rankingFile = null;
                 
                 try{
-                        rankingFile = new Scanner (new File(filePaths.RANKINGFILEPATH));
+                        rankingFile = new Scanner (new File(FilePaths.RANKINGFILEPATH));
                         
                         for (int i = 0; i < 2; i++){
                                 String trash = rankingFile.nextLine();
@@ -31,7 +31,7 @@ public class Ranking {
                                 String phrase = rankingFile.nextLine().replace("-", "");
                                 String[] splitString = phrase.split(" ");
                                 
-                                usersInformation.add(new User(splitString[0], Integer.parseInt(splitString[1])));
+                                playersInformation.add(new Player(splitString[0], Integer.parseInt(splitString[1])));
                         }
                 }
                 catch(IOException e){
@@ -51,11 +51,11 @@ public class Ranking {
         // responsible to sort the ranking information
         public void sortRanking(){
                 // add the last victory
-                usersInformation.add(new User(Menu.playerName, PontuacaoJogo.ACTUALSCORE));
+                playersInformation.add(new Player(MainMenuFrame.playerName, GameScores.ACTUALSCORE));
                 
-                Collections.sort(usersInformation, new Comparator<User>() {
+                Collections.sort(playersInformation, new Comparator<Player>() {
                         @Override
-                        public int compare(User p1, User p2) {
+                        public int compare(Player p1, Player p2) {
                                 int scoreCompare = p2.getUserScore() - p1.getUserScore();
                                 int nameCompare = p1.getUserName().compareTo(p2.getUserName());
                                 
@@ -76,14 +76,14 @@ public class Ranking {
                         PrintWriter printToFile = null;
                         
                 try{
-                        fileWriter = new FileWriter(filePaths.RANKINGFILEPATH);
+                        fileWriter = new FileWriter(FilePaths.RANKINGFILEPATH);
                         printToFile = new PrintWriter(fileWriter);
                         
                         printToFile.println("# GAME RANKING");
                         printToFile.println("# NICKNAME	     SCORE");
                         
                         int count = 0;
-                        for(User xUser: usersInformation){
+                        for(Player xUser: playersInformation){
                                 if (count < 10){
                                         int nameLength = xUser.getUserName().length();
                                         printToFile.print(xUser.getUserName() + " "); 
@@ -114,25 +114,26 @@ public class Ranking {
         public void fillRankingInformation(){
                 int i = 0;
                 
-                for(User xUser: usersInformation){
+                for(Player xUser: playersInformation){
                         if(i < 10){
-                                rankUserNames[i] = xUser.getUserName();
-                                rankUserScores[i] = xUser.getUserScore();
+                                rankPlayersNames[i] = xUser.getUserName();
+                                rankPlayersScores[i] = xUser.getUserScore();
                         }
+                        
                         i++;
                 }
                 
         }
         
         public String getNamesTop10(int i) {
-                return rankUserNames[i];
+                return rankPlayersNames[i];
         }
 
         public Integer getScoresTop10(int i) {
-                return rankUserScores[i];
+                return rankPlayersScores[i];
         }
 
-        public List<User> getUsersInformation() {
-                return usersInformation;
+        public List<Player> getPlayersInformation() {
+                return playersInformation;
         }
 }

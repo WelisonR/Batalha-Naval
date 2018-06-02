@@ -8,7 +8,7 @@ public class main {
 			public void run() {
 				try {
                                         // Show the main menu frame
-                                        Menu frame = Menu.getInstance();
+                                        MainMenuFrame frame = MainMenuFrame.getInstance();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

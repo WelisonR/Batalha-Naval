@@ -1,6 +1,6 @@
 
 // define and manage the game score dynamically according to the selected map (txt)
-public final class PontuacaoJogo {
+public final class GameScores {
         // Initial score - can be easily changed
         public static final int INITIALSCORE = 4500;
         public static int ACTUALSCORE;
@@ -11,7 +11,7 @@ public final class PontuacaoJogo {
         public static int LINEATTACKSCORE;
         public static int COLUMNATTACKSCORE;
         
-        public PontuacaoJogo(){
+        public GameScores(){
                 ACTUALSCORE = INITIALSCORE;
                 
                 calculateNumberOfRectangles();
@@ -24,25 +24,25 @@ public final class PontuacaoJogo {
         // verify the possibility of a certain attack and subtract from actual score
         public boolean RemainedScore(int attackType){
                 switch (attackType) {
-                        case AcoesJogador.POSITIONATTACK:
+                        case PlayerActionsAnalyser.POSITIONATTACK:
                                 if ((ACTUALSCORE - POSITIONATTACKSCORE) >= 0){
                                         ACTUALSCORE -= POSITIONATTACKSCORE;
                                         return true;
                                 }
                                 break;
-                        case AcoesJogador.AREAATTACK:
+                        case PlayerActionsAnalyser.AREAATTACK:
                                 if ((ACTUALSCORE - AREAATTACKSCORE) >= 0){
                                         ACTUALSCORE -= AREAATTACKSCORE;
                                         return true;
                                 }
                                 break;
-                        case AcoesJogador.LINEATTACK:
+                        case PlayerActionsAnalyser.LINEATTACK:
                                 if ((ACTUALSCORE - LINEATTACKSCORE) >= 0){
                                         ACTUALSCORE -= LINEATTACKSCORE;
                                         return true;
                                 }
                                 break;
-                        case AcoesJogador.COLUMNATTACK:
+                        case PlayerActionsAnalyser.COLUMNATTACK:
                                 if ((ACTUALSCORE - COLUMNATTACKSCORE) >= 0){
                                         ACTUALSCORE -= COLUMNATTACKSCORE;
                                         return true;
@@ -57,7 +57,7 @@ public final class PontuacaoJogo {
         // All the attack scores calculus are made according to the number of rectangles and the initial score
         
         public final void calculateNumberOfRectangles(){
-                NUMBEROFRECTANGLES = (LeitorMapa.getCanvasNumberOfLines() * LeitorMapa.getCanvasNumberOfRows());
+                NUMBEROFRECTANGLES = (MapReader.getCanvasNumberOfLines() * MapReader.getCanvasNumberOfColumns());
         }
         
         public final void calculateScoreOfPositionAttack(){
@@ -67,9 +67,9 @@ public final class PontuacaoJogo {
                 AREAATTACKSCORE = (int) (3.8 * POSITIONATTACKSCORE);
         }
         public final void calculateScoreOfLineAttack(){
-                LINEATTACKSCORE = (int) (POSITIONATTACKSCORE * 0.95 * LeitorMapa.getCanvasNumberOfLines());
+                LINEATTACKSCORE = (int) (POSITIONATTACKSCORE * 0.95 * MapReader.getCanvasNumberOfLines());
         }
         public final void calculateScoreOfColumnAttack(){
-                COLUMNATTACKSCORE = (int) (POSITIONATTACKSCORE * 0.95 * LeitorMapa.getCanvasNumberOfRows());
+                COLUMNATTACKSCORE = (int) (POSITIONATTACKSCORE * 0.95 * MapReader.getCanvasNumberOfColumns());
         }
 }

@@ -1,17 +1,18 @@
+
 import java.awt.Color;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 // the main frame 
-public class Menu extends javax.swing.JFrame {
+public class MainMenuFrame extends javax.swing.JFrame {
 
         public static String playerName = "";
         public static String mapPath = "";
         JFileChooser mapFile = new JFileChooser();
         
         // Pattern Singleton concept
-        private static Menu frame = new Menu();
-        private Menu() {
+        private static MainMenuFrame frame = new MainMenuFrame();
+        private MainMenuFrame() {
                 initComponents();
                 jTextFieldPlayerName.setBackground(new Color(0, 0, 0, 196));
                 jButtonPlay.setBackground(new Color(40, 20, 45)); 
@@ -20,7 +21,7 @@ public class Menu extends javax.swing.JFrame {
                 
         }
         
-        public static Menu getInstance(){
+        public static MainMenuFrame getInstance(){
                 return frame;
         }
         
@@ -38,9 +39,7 @@ public class Menu extends javax.swing.JFrame {
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
                 setTitle("Naval Warfare 2.0");
                 setBackground(new java.awt.Color(1, 50, 67));
-                setMaximumSize(new java.awt.Dimension(900, 600));
                 setMinimumSize(new java.awt.Dimension(900, 600));
-                setPreferredSize(new java.awt.Dimension(900, 600));
                 setResizable(false);
                 getContentPane().setLayout(null);
 
@@ -54,7 +53,7 @@ public class Menu extends javax.swing.JFrame {
                         }
                 });
                 getContentPane().add(jButtonPlay);
-                jButtonPlay.setBounds(310, 300, 320, 55);
+                jButtonPlay.setBounds(300, 300, 320, 55);
 
                 jButtonRanking.setBackground(new java.awt.Color(236, 100, 75));
                 jButtonRanking.setFont(new java.awt.Font("Bitstream Charter", 1, 24)); // NOI18N
@@ -66,7 +65,7 @@ public class Menu extends javax.swing.JFrame {
                         }
                 });
                 getContentPane().add(jButtonRanking);
-                jButtonRanking.setBounds(310, 430, 320, 40);
+                jButtonRanking.setBounds(300, 430, 320, 40);
 
                 jTextFieldPlayerName.setFont(new java.awt.Font("Bitstream Charter", 1, 18)); // NOI18N
                 jTextFieldPlayerName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -100,7 +99,7 @@ public class Menu extends javax.swing.JFrame {
                         }
                 });
                 getContentPane().add(jButtonTutorial);
-                jButtonTutorial.setBounds(310, 490, 320, 40);
+                jButtonTutorial.setBounds(300, 490, 320, 40);
 
                 jLabelFundoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu_background.jpg"))); // NOI18N
                 getContentPane().add(jLabelFundoMenu);
@@ -136,7 +135,7 @@ public class Menu extends javax.swing.JFrame {
                                 
                                 // create the game frame and set visible false to main menu
                                 if (!occurredAnError){
-                                        InterfacePrincipal frame = new InterfacePrincipal();
+                                        MainGameFrame frame = new MainGameFrame();
                                         frame.setVisible(true);
                                         setVisible(false);   
                                 }
@@ -163,13 +162,13 @@ public class Menu extends javax.swing.JFrame {
 
         private void jButtonRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRankingActionPerformed
                 // show the ranking frame
-                MenuRanking rank1 = new MenuRanking();
+                RankingFrame rank1 = new RankingFrame();
                 rank1.setVisible(true);
         }//GEN-LAST:event_jButtonRankingActionPerformed
 
         private void jButtonTutorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTutorialActionPerformed
                 // show the tutorial frame
-                tutorialFrame tutorial = new tutorialFrame();
+                TutorialFrame tutorial = new TutorialFrame();
                 tutorial.setVisible(true);
         }//GEN-LAST:event_jButtonTutorialActionPerformed
 
