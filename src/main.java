@@ -7,6 +7,7 @@ public class main {
                         @Override
 			public void run() {
 				try {
+                                        // Show the main menu frame
                                         Menu frame = Menu.getInstance();
 					frame.setVisible(true);
 				} catch (Exception e) {

@@ -3,16 +3,17 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
-
+// class responsible to read and store the game maps informations
 public class LeitorMapa {
-        
         public static final int NUMBEROFBOATS = 5;
+        
         private List<String> fileLines = new ArrayList<>();
-        private static int canvasNumberOfRows;
-	private static int canvasNumberOfLines;
         private Integer[][] gameMatrix;
         private Integer[] boatsNumber;
+        private static int canvasNumberOfRows;
+	private static int canvasNumberOfLines;
         
         public LeitorMapa(String filePath){
                 fileCopy(filePath);
@@ -32,16 +33,17 @@ public class LeitorMapa {
                         }
                 }
                 catch(FileNotFoundException e){
-                        System.out.println("Could not found file!");
+                        JOptionPane.showMessageDialog(null, "Não foi possível abrir o arquivo com o mapa do jogo!");
                 }
                 finally{
                         try{
                                 file.close();
                         }
                         catch(Exception e){
-                                System.out.println("Could not close file");
+                                JOptionPane.showMessageDialog(null, "Não foi possível fechar o arquivo do mapa do jogo");
                         }
                 }
+                
         }
         
         public void readMatrixDimensions(){
@@ -60,6 +62,7 @@ public class LeitorMapa {
                                 gameMatrix[i][j] = (int) (line.charAt(j) - '0');
                         }
                 }
+                
         }
         
         public void readNumberOfBoats(){

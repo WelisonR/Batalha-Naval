@@ -1,4 +1,7 @@
+
+// define and manage the game score dynamically according to the selected map (txt)
 public final class PontuacaoJogo {
+        // Initial score - can be easily changed
         public static final int INITIALSCORE = 4500;
         public static int ACTUALSCORE;
         
@@ -10,6 +13,7 @@ public final class PontuacaoJogo {
         
         public PontuacaoJogo(){
                 ACTUALSCORE = INITIALSCORE;
+                
                 calculateNumberOfRectangles();
                 calculateScoreOfPositionAttack();
                 calculateScoreOfAreaAttack();
@@ -17,6 +21,7 @@ public final class PontuacaoJogo {
                 calculateScoreOfColumnAttack();
         }
         
+        // verify the possibility of a certain attack and subtract from actual score
         public boolean RemainedScore(int attackType){
                 switch (attackType) {
                         case AcoesJogador.POSITIONATTACK:
@@ -48,6 +53,8 @@ public final class PontuacaoJogo {
                 }
                 return false;
         }
+        
+        // All the attack scores calculus are made according to the number of rectangles and the initial score
         
         public final void calculateNumberOfRectangles(){
                 NUMBEROFRECTANGLES = (LeitorMapa.getCanvasNumberOfLines() * LeitorMapa.getCanvasNumberOfRows());

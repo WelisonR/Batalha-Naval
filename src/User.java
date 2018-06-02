@@ -1,4 +1,5 @@
 
+// class to receive the player informations (name and score)
 public class User {
         private String userName;
         private int userScore;

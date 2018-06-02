@@ -2,20 +2,21 @@ import java.awt.Color;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+// the main frame 
 public class Menu extends javax.swing.JFrame {
 
         public static String playerName = "";
         public static String mapPath = "";
         JFileChooser mapFile = new JFileChooser();
         
-        // Pattern Singleton 
+        // Pattern Singleton concept
         private static Menu frame = new Menu();
         private Menu() {
                 initComponents();
-                jTextFieldPlayerName.setBackground(new Color(0, 0, 0, 196)); // transparent with gradient
-                jButtonPlay.setBackground(new Color(40, 20, 45)); // purple
-                jButtonRanking.setBackground(new Color(50, 30, 55)); // purple
-                jButtonTutorial.setBackground(new Color(50, 30, 55)); // purple
+                jTextFieldPlayerName.setBackground(new Color(0, 0, 0, 196));
+                jButtonPlay.setBackground(new Color(40, 20, 45)); 
+                jButtonRanking.setBackground(new Color(50, 30, 55));
+                jButtonTutorial.setBackground(new Color(50, 30, 55));
                 
         }
         
@@ -77,6 +78,11 @@ public class Menu extends javax.swing.JFrame {
                                 jTextFieldPlayerNameFocusLost(evt);
                         }
                 });
+                jTextFieldPlayerName.addKeyListener(new java.awt.event.KeyAdapter() {
+                        public void keyTyped(java.awt.event.KeyEvent evt) {
+                                jTextFieldPlayerNameKeyTyped(evt);
+                        }
+                });
                 getContentPane().add(jTextFieldPlayerName);
                 jTextFieldPlayerName.setBounds(170, 220, 570, 33);
 
@@ -113,6 +119,7 @@ public class Menu extends javax.swing.JFrame {
                 else{
                         playerName = jTextFieldPlayerName.getText();
                         int sucess = mapFile.showOpenDialog(null);
+                        
                         if(sucess == JFileChooser.APPROVE_OPTION){
                                 try{
                                         mapPath = mapFile.getSelectedFile().getAbsolutePath();
@@ -126,7 +133,8 @@ public class Menu extends javax.swing.JFrame {
                                         occurredAnError = true;
                                         JOptionPane.showMessageDialog(null, "O Arquivo selecionado não corresponde ao mapa do jogo!");
                                 }
-                        
+                                
+                                // create the game frame and set visible false to main menu
                                 if (!occurredAnError){
                                         InterfacePrincipal frame = new InterfacePrincipal();
                                         frame.setVisible(true);
@@ -136,6 +144,7 @@ public class Menu extends javax.swing.JFrame {
                         else if (sucess == JFileChooser.CANCEL_OPTION){
                                 JOptionPane.showMessageDialog(null, "Selecione um mapa de jogo em 'gameMaps'!");
                         }
+                        
                 }
         }//GEN-LAST:event_jButtonPlayActionPerformed
 
@@ -153,14 +162,23 @@ public class Menu extends javax.swing.JFrame {
         }//GEN-LAST:event_jTextFieldPlayerNameFocusLost
 
         private void jButtonRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRankingActionPerformed
+                // show the ranking frame
                 MenuRanking rank1 = new MenuRanking();
                 rank1.setVisible(true);
         }//GEN-LAST:event_jButtonRankingActionPerformed
 
         private void jButtonTutorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTutorialActionPerformed
+                // show the tutorial frame
                 tutorialFrame tutorial = new tutorialFrame();
                 tutorial.setVisible(true);
         }//GEN-LAST:event_jButtonTutorialActionPerformed
+
+        // constrains the character's number
+        private void jTextFieldPlayerNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPlayerNameKeyTyped
+                if (jTextFieldPlayerName.getText().length() > 10){
+                        evt.consume();
+                }
+        }//GEN-LAST:event_jTextFieldPlayerNameKeyTyped
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton jButtonPlay;

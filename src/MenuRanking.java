@@ -1,16 +1,18 @@
 
 import javax.swing.JLabel;
 
+// class responsible to show the menu ranking
 public class MenuRanking extends javax.swing.JFrame {
-
         Ranking rank;
         JLabel[] playerNameLabel = new JLabel[10];
         JLabel[] playerScoreLabel = new JLabel[10];
         
         public MenuRanking() {
+                // load and process the ranking informations
                 rank = new Ranking();
                 rank.readRanking();
                 rank.fillRankingInformation();
+                
                 initComponents();
                 initComponents2();
         }
@@ -50,11 +52,11 @@ public class MenuRanking extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
         public void initComponents2(){
-                
+                // put the top 10 players names in JFrame
                 for (int i = 0; i < 10; i++){
                         playerNameLabel[i] = new JLabel();
-                        playerNameLabel[i].setFont(new java.awt.Font("Bitstream Charter", 1, 24)); // NOI18N
-                        playerNameLabel[i].setForeground(new java.awt.Color(108,122,137)); // 240, 52, 52
+                        playerNameLabel[i].setFont(new java.awt.Font("Bitstream Charter", 1, 24));
+                        playerNameLabel[i].setForeground(new java.awt.Color(108,122,137));
                         getContentPane().add(playerNameLabel[i]);
                         playerNameLabel[i].setBounds(130, 90+40*i, 170, 40);
                         
@@ -64,6 +66,7 @@ public class MenuRanking extends javax.swing.JFrame {
                         jLabelBackground.add(playerNameLabel[i]);
                 }
                 
+                // put the top 10 players scores in JFrame
                 for (int i = 0; i < 10; i++){
                         playerScoreLabel[i] = new JLabel();
                         playerScoreLabel[i].setFont(new java.awt.Font("Bitstream Charter", 1, 24)); // NOI18N
@@ -76,6 +79,7 @@ public class MenuRanking extends javax.swing.JFrame {
                         
                         jLabelBackground.add(playerScoreLabel[i]);
                 }
+                
         }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,7 +1,7 @@
 import java.awt.Graphics;
 
+// class to repaint the canvas in accordance to a timer
 public class CanvasThread extends Thread {
-        
 	private CanvasJogo canvas;
 	private boolean running = true; 
 	
@@ -17,6 +17,7 @@ public class CanvasThread extends Thread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+                        
 			if (running == true){
                                 canvas.paint(canvas.getGraphics());
                         }
