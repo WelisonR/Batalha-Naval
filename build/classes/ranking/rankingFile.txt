@@ -1,6 +1,5 @@
 # GAME RANKING
 # NICKNAME	     SCORE
-xMythz --------------1898
 Profile0 ------------0
 Profile1 ------------0
 Profile2 ------------0
@@ -10,3 +9,4 @@ Profile5 ------------0
 Profile6 ------------0
 Profile7 ------------0
 Profile8 ------------0
+Profile9 ------------0
