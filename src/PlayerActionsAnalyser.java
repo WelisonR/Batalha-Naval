@@ -264,9 +264,7 @@ public class PlayerActionsAnalyser {
                                                 booleanFoundBoats[j-3][i] = 1;
                                         }
                                         else if (startCopy == 5){
-                                                System.out.println("flag");
                                                 boatsNumber[4] -= 1;
-                                                System.out.println(boatsNumber[4]);
                                                 booleanFoundBoats[j][i] = 1;
                                                 booleanFoundBoats[j-1][i] = 1;
                                                 booleanFoundBoats[j-2][i] = 1;
